@@ -29,6 +29,16 @@ img.launch-waves {
 	bottom: 0;
 	z-index: -1;
 }
+img.bottom-logo {
+	display: block;
+	width: 120px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 4em;
+	z-index: 0;
+	margin: auto auto;
+}
 .form-wrap {
 	width: 80%;
 	max-width: 25em;
