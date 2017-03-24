@@ -1,5 +1,5 @@
 body, h1, h2, h3, h4, h5, h6, p, input, label {
-	font-family: "Usual" !important;
+	font-family: "Usual", "-apple-system", "Segoe UI" !important;
 }
 * {
 	-webkit-user-drag: none;
@@ -12,6 +12,7 @@ html#launch, body#launch {
 }
 a {
 	text-decoration: none;
+	cursor: pointer;
 }
 .text-center {
 	text-align: center;
@@ -31,8 +32,12 @@ img.launch-waves {
 .form-wrap {
 	width: 80%;
 	max-width: 25em;
-	padding: 0.3em 1em;
+	padding: 0.3em 1em 2em;
 	margin: 1em auto 0;
+	background: rgba(255,255,255,0.8);
+	backdrop-filter: blur(15px);
+	-webkit-backdrop-filter: blur(15px);
+	border-radius: 5px;
 }
 .in-form-wrap {
 	margin: auto auto;
@@ -41,8 +46,14 @@ img.launch-waves {
 .in-form-wrap:last-child {
 	margin-top: 1em;
 }
-@media (max-width: 374px) {
+@media (max-width: 375px) {
 	html#launch, body#launch {
 		min-height: 100%;
+	}
+	img.launch-icon {
+		margin-top: 0;
+	}
+	.form-wrap {
+		margin-top: 0;
 	}
 }
