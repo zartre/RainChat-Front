@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 41 53" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g id="Artboard1" transform="matrix(1,0,0,1,-379.522,-273.677)">
+        <rect x="379.522" y="273.677" width="40.955" height="52.646" style="fill:none;"/>
+        <g transform="matrix(0.0868845,0,0,0.0868845,355.402,248.423)">
+            <path d="M513.3,290.667C513.3,290.667 748.989,489.009 748.989,660.906C748.989,790.986 643.38,896.594 513.3,896.594C383.22,896.594 277.611,790.986 277.611,660.906C277.611,489.592 513.3,290.667 513.3,290.667Z" style="fill:url(#_Radial1);"/>
+        </g>
+    </g>
+    <defs>
+        <radialGradient id="_Radial1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(377.761,302.964,-379.096,472.689,277.611,593.631)"><stop offset="0%" style="stop-color:rgb(108,238,255);stop-opacity:1"/><stop offset="55%" style="stop-color:rgb(85,227,255);stop-opacity:1"/><stop offset="100%" style="stop-color:rgb(0,184,255);stop-opacity:1"/></radialGradient>
+    </defs>
+</svg>
