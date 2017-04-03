@@ -1,0 +1,11 @@
+body, h1, h2, h3, h4, h5, h6, p, input, label {
+    font-family: "Usual", "-apple-system", "Segoe UI" !important;
+}
+
+/* CHAT TITLE */
+.mdl-layout-title {
+    font-family: "Usual", "-apple-system", "Segoe UI" !important;
+}
+div.roomname {
+    font-size: 1.429em;
+}
