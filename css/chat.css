@@ -3,9 +3,49 @@ body, h1, h2, h3, h4, h5, h6, p, input, label {
 }
 
 /* CHAT TITLE */
+.mdl-layout__header-row {
+	background-color: #00B8FF;
+}
+.mdl-layout__header .mdl-layout__drawer-button {
+	background-color: #00B8FF;
+}
 .mdl-layout-title {
-    font-family: "Usual", "-apple-system", "Segoe UI" !important;
+	margin-top: 15px;
+	padding-right: 40px;
+}
+.mdl-layout-title img {
+	width: 100%;
+}
+.mdl-navigation span.chatrooms {
+	padding: 0 40px;
+	margin: 5px 0;
+	color: #757575;
+}
+.mdl-navigation hr {
+	margin: 0 0 10px 40px;
+}
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
+	color: #000;
 }
 div.roomname {
     font-size: 1.429em;
+}
+
+/* MEDIA */
+@media screen and (max-width: 1024px) {
+	.mdl-layout__header-row {
+		padding-left: 57px;
+	}
+	.mdl-layout-title {
+		padding-right: 16px;
+	}
+	.mdl-layout-title img {
+		width: 80%;
+	}
+	.mdl-navigation span.chatrooms {
+		padding-left: 16px;
+	}
+	.mdl-navigation hr {
+		margin-left: 16px;
+	}
 }
