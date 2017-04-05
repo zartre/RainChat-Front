@@ -62,7 +62,7 @@
     function sendMessage() {
         // @DOBA: do something when form is submitted
         message = $('#chat').val();
-        $('#chat').removeAttr('value');
+        $('#chat').val('');
         ws.send(message);
         showMessage('myself: ' + message);
     }
