@@ -1,6 +1,9 @@
 body, h1, h2, h3, h4, h5, h6, input, label, p {
 	font-family: "Usual", "-apple-system", "Segoe UI" !important;
 }
+
+/* TITLE AND NAV */
+
 .mdl-layout__header .mdl-layout__drawer-button,
 .mdl-layout__header-row {
 	background-color: #00b8ff;
@@ -26,6 +29,31 @@ body, h1, h2, h3, h4, h5, h6, input, label, p {
 div.roomname {
 	font-size: 1.429em;
 }
+
+/* BUBBLES */
+
+.bubble {
+	background: #e6e6e6;
+	width: auto;
+	max-width: 35em;
+	padding: 0.6em 1.2em;
+	border-radius: 1.5em 1.5em 1.5em 0;
+	margin-bottom: 1em;
+	float: left;
+	clear: both;
+}
+.bubble:last-of-type {
+	margin-bottom: 0;
+}
+.bubble.me {
+	float: right;
+	background: #00b8ff;
+	color: #fff;
+	border-radius: 1.5em 1.5em 0 1.5em;
+}
+
+/* MEDIA */
+
 @media screen and (max-width: 1024px) {
 	.mdl-layout__header-row {
 		padding-left: 57px;
@@ -41,5 +69,8 @@ div.roomname {
 	}
 	.mdl-navigation hr {
 		margin-left: 16px;
+	}
+	.bubble {
+		max-width: 30em;
 	}
 }
