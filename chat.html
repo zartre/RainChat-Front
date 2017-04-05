@@ -8,12 +8,11 @@
     <link rel="stylesheet" href="css/dist/chat.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://webfonts.fontstand.com/WF-004772-a609fb9a2bcd7b43b73445197bcb1b20.css"
-          type="text/css">
+    type="text/css">
     <script src="https://unpkg.com/vue"></script>
 </head>
 <body>
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
-            mdl-layout--fixed-header">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
     <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
             <div class="roomname">Anonymous Group</div>
@@ -24,7 +23,7 @@
             <img src="img/logo-sidebar.png" alt="Rainy Chat">
         </span>
         <nav class="mdl-navigation">
-            <span class="chatrooms">Chat rooms</span>
+            <span class="chatrooms">Rooms you're logged in</span>
             <hr>
             <a class="mdl-navigation__link" href="">
                 <strong>Anonymous Room</strong><br>
@@ -43,12 +42,12 @@
     <main class="mdl-layout__content">
         <div class="page-content">
             <div class="mdl-grid">
-                <div class="mdl-cell mdl-cell--12-col">
+                <div class="mdl-cell mdl-cell--12-col" style="margin-bottom:6em;">
                     <div class="bubble others">
-                        This is a message from the opposite side. If it's long, it will go to a new line.
+                        Hi Tom!
                     </div>
                     <div class="bubble others">
-                        This is a message from the opposite side. If it's long, it will go to a new line. Just like this one.
+                        Are you up tonight?
                     </div>
                     <div class="bubble others">
                         This is a message from the opposite side. If it's long, it will go to a new line.
@@ -75,6 +74,14 @@
                         This is a message from the opposite side. If it's long, it will go to a new line.
                     </div>
                 </div>
+            </div>
+            <div class="textinput">
+                <form action="#">
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" id="sample1" autofocus="1">
+                        <label class="mdl-textfield__label" for="sample1">Type here</label>
+                    </div>
+                </form>
             </div>
         </div>
     </main>
