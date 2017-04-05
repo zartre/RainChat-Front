@@ -1,13 +1,9 @@
-body, h1, h2, h3, h4, h5, h6, p, input, label {
-    font-family: "Usual", "-apple-system", "Segoe UI" !important;
+body, h1, h2, h3, h4, h5, h6, input, label, p {
+	font-family: "Usual", "-apple-system", "Segoe UI" !important;
 }
-
-/* CHAT TITLE */
+.mdl-layout__header .mdl-layout__drawer-button,
 .mdl-layout__header-row {
-	background-color: #00B8FF;
-}
-.mdl-layout__header .mdl-layout__drawer-button {
-	background-color: #00B8FF;
+	background-color: #00b8ff;
 }
 .mdl-layout-title {
 	margin-top: 15px;
@@ -28,10 +24,8 @@ body, h1, h2, h3, h4, h5, h6, p, input, label {
 	color: #000;
 }
 div.roomname {
-    font-size: 1.429em;
+	font-size: 1.429em;
 }
-
-/* MEDIA */
 @media screen and (max-width: 1024px) {
 	.mdl-layout__header-row {
 		padding-left: 57px;
