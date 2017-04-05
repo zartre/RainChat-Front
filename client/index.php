@@ -5,16 +5,18 @@
 </head>
 <body>
 
+<div id="chatlog">
+
+</div>
+
 <input id="chat" type="text" name="command">
 <button id=submit></button>
-
-<div id="chatlog"></div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script type="text/javascript">
 
     function connect(host, port) {
-        ws = new WebSocket('ws://' + host + ':' + port);
+        ws = new WebSocket('ws://' + host + ':' + '8080');
         console.log(ws);
         return ws
     }
