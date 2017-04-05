@@ -4,10 +4,11 @@ body, h1, h2, h3, h4, h5, h6, input, label, p {
 
 /* TITLE AND NAV */
 
-.mdl-layout__header .mdl-layout__drawer-button,
+.mdl-layout__header,
 .mdl-layout__header-row {
-	background-color: #00b8ff;
+	background: linear-gradient(135deg, #00b8ff 50%, #6CEEFF);
 }
+
 .mdl-layout-title {
 	margin-top: 15px;
 	padding-right: 40px;
@@ -28,6 +29,14 @@ body, h1, h2, h3, h4, h5, h6, input, label, p {
 }
 div.roomname {
 	font-size: 1.429em;
+	margin: 0 auto;
+}
+
+/* CONTENT AREA */
+
+.page-content {
+	max-width: 1000px;
+	margin: 0 auto;
 }
 
 /* BUBBLES */
@@ -56,11 +65,14 @@ div.roomname {
 
 .textinput {
 	position: fixed;
+	box-sizing: border-box;
 	bottom: 0;
 	background: rgba(255,255,255,0.8);
 	-webkit-backdrop-filter: blur(8px);
 	padding: 0 2em;
 	width: 100%;
+	max-width: 1000px;
+	border-top: 1px solid #e6e6e6;
 }
 .textinput .mdl-textfield {
 	width: 100%;
@@ -68,6 +80,11 @@ div.roomname {
 
 /* MEDIA */
 
+@media screen and (max-width: 1278px) {
+	.page-content, .textinput {
+		max-width: 780px;
+	}
+}
 @media screen and (max-width: 1024px) {
 	.mdl-layout__header-row {
 		padding-left: 57px;
@@ -84,7 +101,13 @@ div.roomname {
 	.mdl-navigation hr {
 		margin-left: 16px;
 	}
+	div.roomname {
+		margin-left: 0;
+	}
 	.bubble {
 		max-width: 30em;
+	}
+	.page-content, .textinput {
+		max-width: 100%;
 	}
 }
