@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="textinput">
-                    <form id="chatlog">
+                    <form id="chatform">
                         <div class="mdl-textfield mdl-js-textfield">
                             <input class="mdl-textfield__input" type="text" id="chat" name="command" autofocus="1">
                             <label class="mdl-textfield__label" for="chat">Type here</label>
@@ -81,25 +81,28 @@
     function sendMessage() {
         // @DOBA: do something when form is submitted
         message = $('#chat').val();
+        if (!message) {
+            return;
+        }
         $('#chat').val('');
         ws.send(message);
-        showMessage('myself: ' + message);
+        showMessage('me', message);
     }
-    function showMessage(message){
+    function showMessage(from, message){
         // @DOBA: do something if recieve a [message]
-        $('#chatlog').append('<div class="bubble">' + message + '</div>');
+        $('#chatlog').append('<div class="bubble ' + from + '">' + message + '</div>');
         console.log('Message received:' + message);
     }
     ws = connect('52.74.90.15', '8080'); // ec2-host
     ws.onopen = function() {
         // @DOBA: do something when connection is established
-        $('#chatlog').on('submit', function(e) {
+        $('#chatform').submit(function(e) {
             e.preventDefault();
             sendMessage();
         });
     }
     ws.onmessage = function(event) {
-        showMessage('anonymous: ' + event.data);
+        showMessage('other', event.data);
     }
 </script>
 </body>
