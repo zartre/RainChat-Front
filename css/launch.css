@@ -4,6 +4,15 @@ body, h1, h2, h3, h4, h5, h6, p, input, label {
 * {
 	-webkit-user-drag: none;
 	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+input {
+	-webkit-user-select: auto;
+	-moz-user-select: auto;
+	-ms-user-select: auto;
+	user-select: auto;
 }
 html#launch, body#launch {
 	height: 100%;
