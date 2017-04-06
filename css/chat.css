@@ -16,6 +16,13 @@ body, h1, h2, h3, h4, h5, h6, input, label, p {
 .mdl-layout-title img {
 	width: 100%;
 }
+div.roomname {
+	font-size: 1.429em;
+	margin: 0 auto;
+}
+
+/* DRAWER */
+
 .mdl-navigation span.chatrooms {
 	padding: 0 40px;
 	margin: 5px 0;
@@ -27,9 +34,24 @@ body, h1, h2, h3, h4, h5, h6, input, label, p {
 .mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
 	color: #000;
 }
-div.roomname {
-	font-size: 1.429em;
-	margin: 0 auto;
+.bottom-drawer {
+	display: inline-block;
+	width: 50%;
+	position: fixed;
+	bottom: 0;
+	height: 50px;
+	box-sizing: border-box;
+	color: #fff;
+	text-decoration: none;
+	text-align: center;
+	border-radius: 0;
+}
+.bottom-drawer.add {
+	background: #00b8ff;
+}
+.bottom-drawer.logout {
+	right: 0;
+	background: rgb(255, 94, 84);
 }
 
 /* CONTENT AREA */
@@ -109,5 +131,8 @@ div.roomname {
 	}
 	.page-content, .textinput {
 		max-width: 100%;
+	}
+	a.bottom-drawer {
+		padding: 16px 0;
 	}
 }
