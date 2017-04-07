@@ -82,6 +82,10 @@ div.roomname {
 	color: #fff;
 	border-radius: 1.5em 1.5em 0 1.5em;
 }
+.bubble.me + .bubble.me,
+.bubble.other + .bubble.other {
+	margin-top: -0.7em;
+}
 
 /* TYPING BOX */
 
