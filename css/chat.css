@@ -1,4 +1,4 @@
-body, h1, h2, h3, h4, h5, h6, input, label, p {
+body, h1, h2, h3, h4, h5, h6, input, label, p, button {
 	font-family: "Usual", "-apple-system", "Segoe UI" !important;
 }
 
@@ -81,6 +81,10 @@ div.roomname {
 	background: #00b8ff;
 	color: #fff;
 	border-radius: 1.5em 1.5em 0 1.5em;
+}
+.bubble.me + .bubble.me,
+.bubble.other + .bubble.other {
+	margin-top: -0.7em;
 }
 
 /* TYPING BOX */
