@@ -69,11 +69,11 @@
     <script type="text/javascript">
     function connect(host, port) {
         // connect to server socket
-        ws = new WebSocket('ws://' + host + ':' + '8080');
+        var ws = new WebSocket('ws://' + host + ':' + '8080');
         console.log(ws);
-        return ws
+        return ws;
     }
-    function sendMessage() {
+    function sendMessage(ws) {
         // @DOBA: do something when form is submitted
         message = $('#chat').val();
         if (!message) {
@@ -81,24 +81,36 @@
         }
         $('#chat').val('');
         ws.send(message);
-        showMessage('me', message);
+        addChatLog('me', message);
     }
-    function showMessage(from, message){
+    function addChatLog(from, message) {
         // @DOBA: do something if recieve a [message]
         $('#chatlog').append('<div class="bubble ' + from + '">' + message + '</div>');
         console.log('Message received:' + message);
     }
-    ws = connect('52.74.90.15', '8080'); // ec2-host
-    ws.onopen = function() {
-        // @DOBA: do something when connection is established
-        $('#chatform').submit(function(e) {
-            e.preventDefault();
-            sendMessage();
-        });
+    function login(ws, username, roomname) {
+        // init websocket connection
+        var ws = connect('0.0.0.0', '8080'); // ec2-host
+        ws.onopen = function() {
+            // @DOBA: do something when connection is established
+            $('#chatform').submit(function(e) {
+                e.preventDefault();
+                sendMessage(ws);
+            });
+            // login prerequisite
+            // var data = {
+            //     username: "username",
+            //     roomname: "roomname"
+            // }
+            // ws.send(JSON.stringify(data));
+        }
+        ws.onmessage = function(event) {
+            addChatLog('other', event.data);
+        }
     }
-    ws.onmessage = function(event) {
-        showMessage('other', event.data);
-    }
+
+    login();
+
 </script>
 </body>
 </html>
