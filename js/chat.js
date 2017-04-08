@@ -34,7 +34,7 @@ function addChatLog(username, message) {
 }
 function login(ws, username, roomname) {
     // init websocket connection
-    var ws = connect('0.0.0.0', '8080'); // ec2-host
+    var ws = connect('52.74.90.15', '8080'); // ec2-host
     ws.onopen = function() {
         // @DOBA: do something when connection is established
         $('#chatform').submit(function(e) {
