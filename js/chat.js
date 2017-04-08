@@ -34,8 +34,8 @@ ws.onmessage = function (event) {
 }
 
 // Auto-scroll
-var chatWindow = $('#chatlog')[0];
 function scrollToBottom() {
-    chatWindow.scrollTop = chatWindow.scrollHeight;
+    $('#chatwrap').animate({
+        scrollTop: $("#chat-end").offset().top
+    }, 150);
 }
-var chatWindowHeight = chatWindow.height();
