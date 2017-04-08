@@ -45,10 +45,10 @@
                 Logout
             </button>
         </div>
-        <main class="mdl-layout__content">
+        <main class="mdl-layout__content" id="chatwrap">
             <div class="page-content">
                 <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--12-col" style="margin-bottom:6em;" id="chatlog">
+                    <div class="mdl-cell mdl-cell--12-col" style="margin-bottom:6em" id="chatlog">
                         <!-- chat log's here -->
                     </div>
                 </div>
@@ -62,56 +62,11 @@
                     </form>
                 </div>
             </div>
+            <div id="chat-end"></div>
         </main>
     </div>
     <script defer src="js/material.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <script type="text/javascript">
-    function connect(host, port) {
-        // connect to server socket
-        var ws = new WebSocket('ws://' + host + ':' + '8080');
-        console.log(ws);
-        return ws;
-    }
-    function sendMessage(ws) {
-        // @DOBA: do something when form is submitted
-        message = $('#chat').val();
-        if (!message) {
-            return;
-        }
-        $('#chat').val('');
-        ws.send(message);
-        addChatLog('me', message);
-    }
-    function addChatLog(from, message) {
-        // @DOBA: do something if recieve a [message]
-        $('#chatlog').append('<div class="bubble ' + from + '">' + message + '</div>');
-        console.log('Message received:' + message);
-    }
-    function login(ws, username, roomname) {
-        // init websocket connection
-        var ws = connect('52.74.90.15', '8080'); // ec2-host
-        // var ws = connect('0.0.0.0', '8080');
-        ws.onopen = function() {
-            // @DOBA: do something when connection is established
-            $('#chatform').submit(function(e) {
-                e.preventDefault();
-                sendMessage(ws);
-            });
-            // login prerequisite
-            // var data = {
-            //     username: "username",
-            //     roomname: "roomname"
-            // }
-            // ws.send(JSON.stringify(data));
-        }
-        ws.onmessage = function(event) {
-            addChatLog('other', event.data);
-        }
-    }
-
-    login();
-
-</script>
+    <script type="text/javascript" src="js/chat.js"></script>
 </body>
 </html>
