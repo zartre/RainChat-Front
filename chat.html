@@ -38,6 +38,14 @@
                     last message appears...
                 </a>
             </nav>
+
+            <!-- @DOBA: here's the username form -->
+            <div class="mdl-textfield mdl-js-textfield in-form-wrap">
+                <input class="mdl-textfield__input" type="text" id="login__username" value="DOBA">
+                <label class="mdl-textfield__label" for="login__username">Display name</label>
+            </div>
+            <!-- username form ended -->
+
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect bottom-drawer add">
                 Add
             </button>
@@ -81,11 +89,15 @@
         }
         $('#chat').val('');
         ws.send(message);
-        addChatLog('me', message);
+        addChatLog(null, message);
     }
-    function addChatLog(from, message) {
+    function addChatLog(username, message) {
         // @DOBA: do something if recieve a [message]
-        $('#chatlog').append('<div class="bubble ' + from + '">' + message + '</div>');
+        if (username === null) {
+            $('#chatlog').append('<div class="bubble me">' + message + '</div>');
+        } else {
+            $('#chatlog').append('<div class="bubble other">' + username + ": " + message + '</div>');
+        }
         console.log('Message received:' + message);
     }
     function login(ws, username, roomname) {
@@ -98,14 +110,15 @@
                 sendMessage(ws);
             });
             // login prerequisite
-            // var data = {
-            //     username: "username",
-            //     roomname: "roomname"
-            // }
-            // ws.send(JSON.stringify(data));
+            var data = {
+                username: $('#login__username').val(),
+                roomname: "AnonymousRoom"
+            }
+            ws.send(JSON.stringify(data));
         }
         ws.onmessage = function(event) {
-            addChatLog('other', event.data);
+            var json = JSON.parse(event.data);
+            addChatLog(json.username, json.message);
         }
     }
 
