@@ -35,6 +35,7 @@ function addChatLog(username, message) {
 function login(ws, username, roomname) {
     // init websocket connection
     var ws = connect('52.74.90.15', '8080'); // ec2-host
+    // var ws = connect('0.0.0.0', '8080'); // ec2-host
     ws.onopen = function() {
         // @DOBA: do something when connection is established
         $('#chatform').submit(function(e) {
@@ -42,11 +43,16 @@ function login(ws, username, roomname) {
             sendMessage(ws);
         });
         // login prerequisite
-        var data = {
-            username: $('#login__username').val(),
-            roomname: "AnonymousRoom"
-        }
-        ws.send(JSON.stringify(data));
+        // while (1) {
+            var data = {
+                username: $('#login__username').val(),
+                roomname: $('#login__room_id').val(),
+                is_newroom: 1,
+                has_pass: 0,
+                password: 'password'
+            }
+            ws.send(JSON.stringify(data));
+        // }
     }
     ws.onmessage = function(event) {
         var json = JSON.parse(event.data);
