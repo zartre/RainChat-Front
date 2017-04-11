@@ -1,8 +1,6 @@
 // Auto-scroll
 function scrollToBottom() {
-    $('#chatwrap').animate({
-        scrollTop: $("#chat-end").offset().top
-    }, 150);
+    $("#chatwrap").scrollTop($("#chatwrap")[0].scrollHeight);
 }
 
 // Websocket connection
