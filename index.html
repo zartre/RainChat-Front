@@ -1,70 +1,80 @@
 <!DOCTYPE html>
-<html lang="en" id="launch">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rain Chat</title>
     <link rel="stylesheet" href="css/material.min.css">
-    <link rel="stylesheet" href="css/launch.css">
+    <link rel="stylesheet" href="css/dist/chat.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://webfonts.fontstand.com/WF-004772-a609fb9a2bcd7b43b73445197bcb1b20.css"
-          type="text/css">
+    type="text/css">
     <script src="https://unpkg.com/vue"></script>
 </head>
-<body id="launch">
-<div class="mdl-grid" id="app">
-    <img src="img/RainChat-icon.svg" alt="RainChat" class="launch-icon">
-    <div class="mdl-cell mdl-cell--12-col">
-        <div class="form-wrap">
-            <form action="#" v-show="mode==1">
-                <div class="mdl-textfield mdl-js-textfield in-form-wrap">
-                    <input class="mdl-textfield__input" type="text" id="login__username">
-                    <label class="mdl-textfield__label" for="login__username">Display name</label>
-                </div>
-                <div class="mdl-textfield mdl-js-textfield in-form-wrap">
-                    <input class="mdl-textfield__input" type="text" id="login__room_id">
-                    <label class="mdl-textfield__label" for="login__room_id">Room ID</label>
-                </div>
-                <a class="text-center in-form-wrap" @click="mode=2">or click here to create a room</a>
-                <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--primary in-form-wrap">
-                    <i class="material-icons">arrow_forward</i>
-                </button>
-            </form>
-            <form action="#" v-show="mode==2">
-                <div class="mdl-textfield mdl-js-textfield in-form-wrap">
-                    <input class="mdl-textfield__input" type="text" id="create__room_id" pattern="[a-zA-Z0-9-_]*">
-                    <label class="mdl-textfield__label" for="create__room_id">Room ID</label>
-                    <span class="mdl-textfield__error">Room ID already taken</span>
-                </div>
-                <div class="mdl-textfield mdl-js-textfield in-form-wrap">
-                    <input class="mdl-textfield__input" type="password" id="create__room_pwd">
-                    <label class="mdl-textfield__label" for="create__room_pwd">Password (optional)</label>
-                </div>
-                <div class="mdl-textfield mdl-js-textfield in-form-wrap">
-                    <input class="mdl-textfield__input" type="text" id="create__room_tag">
-                    <label class="mdl-textfield__label" for="create__room_tag">Tags (optional)</label>
-                </div>
-                <a class="text-center in-form-wrap" @click="mode=1">or click here to join a room</a>
-                <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--primary in-form-wrap">
-                    <i class="material-icons">arrow_forward</i>
-                </button>
-            </form>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <div class="roomname">Anonymous Group</div>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">
+                <img src="img/logo-sidebar.png" alt="Rainy Chat">
+            </span>
+            <nav class="mdl-navigation">
+                <span class="chatrooms">Rooms you're logged in</span>
+                <hr>
+                <a class="mdl-navigation__link" href="">
+                    <strong>Anonymous Room</strong><br>
+                    last message appears...
+                </a>
+                <a class="mdl-navigation__link" href="">
+                    <strong>Anonymous Room</strong><br>
+                    last message appears...
+                </a>
+                <a class="mdl-navigation__link" href="">
+                    <strong>Anonymous Room</strong><br>
+                    last message appears...
+                </a>
+            </nav>
+
+            <!-- @DOBA: here's the username form -->
+            <div class="mdl-textfield mdl-js-textfield in-form-wrap">
+                <input class="mdl-textfield__input" type="text" id="login__username" value="DOBA">
+                <label class="mdl-textfield__label" for="login__username">Display name</label>
+            </div>
+            <!-- username form ended -->
+
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect bottom-drawer add">
+                Add
+            </button>
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect bottom-drawer logout">
+                Logout
+            </button>
         </div>
+        <main class="mdl-layout__content" id="chatwrap">
+            <div class="page-content">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--12-col" style="margin-bottom:6em" id="chatlog">
+                        <!-- chat log's here -->
+                    </div>
+                </div>
+                <div class="textinput">
+                    <form id="chatform">
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="text" id="chat" name="command" autofocus="1">
+                            <label class="mdl-textfield__label" for="chat">Type here</label>
+                            <button id="submit" style="display: none;">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="chat-end"></div>
+        </main>
     </div>
-</div>
-<img src="img/RainChat-text.svg" alt="RainChat" class="bottom-logo">
-<picture>
-    <source srcset="img/launch-waves.png 1x, img/launch-waves-2x.png 2x">
-    <img src="img/launch-waves.png" class="launch-waves">
-</picture>
-<script defer src="js/material.min.js"></script>
-<script>
-    var app = new Vue({
-        el: '#app',
-        data: {
-            mode: 1
-        }
-    })
-</script>
+    <script defer src="js/material.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="js/chat.js"></script>
 </body>
 </html>
