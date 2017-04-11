@@ -37,7 +37,7 @@ div.roomname {
 .bottom-drawer {
 	display: inline-block;
 	width: 50%;
-	position: fixed;
+	position: absolute;
 	bottom: 0;
 	height: 50px;
 	box-sizing: border-box;
