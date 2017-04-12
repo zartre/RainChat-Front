@@ -25,7 +25,7 @@ function addChatLog(username, message) {
     if (username === null) {
         $('#chatlog').append('<div class="bubble me">' + message + '</div>');
     } else {
-        $('#chatlog').append('<div class="bubble other">' + username + ": " + message + '</div>');
+        $('#chatlog').append('<div class="bub-other-group"><div class="other-name">' + username + '</div><div class="bubble other">' + message + '</div></div>');
     }
     console.log('Message received:' + message);
     scrollToBottom();
