@@ -1,5 +1,5 @@
 body, h1, h2, h3, h4, h5, h6, input, label, p, button {
-	font-family: "Usual", "-apple-system", "Segoe UI", "Ubuntu" !important;
+	font-family: "Usual", "-apple-system", "Segoe UI", "Ubuntu", sans-serif !important;
 }
 
 /* TITLE AND NAV */
@@ -23,12 +23,12 @@ div.roomname {
 
 /* DRAWER */
 
-.mdl-navigation span.chatrooms {
+.drawer-section {
 	padding: 0 40px;
 	margin: 5px 0;
 	color: #757575;
 }
-.mdl-navigation hr {
+.mdl-layout__drawer hr {
 	margin: 0 0 10px 40px;
 }
 .mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
@@ -52,6 +52,16 @@ div.roomname {
 .bottom-drawer.logout {
 	right: 0;
 	background: rgb(255, 94, 84);
+}
+.online-users {
+	padding: 10px 20px 0 40px;
+}
+.online-users .user {
+	width: 195px;
+	margin-bottom: 0.5em;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 /* CONTENT AREA */
@@ -150,5 +160,14 @@ div.roomname {
 	}
 	a.bottom-drawer {
 		padding: 16px 0;
+	}
+	.mdl-layout__drawer hr {
+		margin: 0 16px 10px;
+	}
+	.online-users, .drawer-section {
+		padding: 0 16px;
+	}
+	.online-users .user {
+		width: 209px;
 	}
 }

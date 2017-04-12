@@ -6,10 +6,9 @@
     <title>Rain Chat</title>
     <link rel="stylesheet" href="css/material.min.css">
     <link rel="stylesheet" href="css/dist/chat.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://webfonts.fontstand.com/WF-004772-a609fb9a2bcd7b43b73445197bcb1b20.css"
-    type="text/css">
-    <script src="https://unpkg.com/vue"></script>
+    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">-->
+    <!--<script src="https://unpkg.com/vue"></script>-->
+    <script defer src="js/material.min.js" async></script>
 </head>
 <body>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
@@ -22,29 +21,24 @@
             <span class="mdl-layout-title">
                 <img src="img/logo-sidebar.png" alt="Rainy Chat">
             </span>
-            <nav class="mdl-navigation">
-                <span class="chatrooms">Rooms you're logged in</span>
-                <hr>
-                <a class="mdl-navigation__link" href="">
-                    <strong>Anonymous Room</strong><br>
-                    last message appears...
-                </a>
-                <a class="mdl-navigation__link" href="">
-                    <strong>Anonymous Room</strong><br>
-                    last message appears...
-                </a>
-                <a class="mdl-navigation__link" href="">
-                    <strong>Anonymous Room</strong><br>
-                    last message appears...
-                </a>
-            </nav>
+            <div class="drawer-section">Online users</div>
+            <hr>
+            <div class="online-users">
+                <div class="user">
+                    DobaKungkasjdlakjsdlasjdlasdjlaksjdlasjdlkajsdlasjlkdjalskjd
+                </div>
+                <div class="user">
+                    DobaKung asdasd asdasdaskjksjd asdjasdkj
+                </div>
+            </div>
 
             <!-- @DOBA: here's the username form -->
-            <div class="mdl-textfield mdl-js-textfield in-form-wrap">
+            <!--<div class="mdl-textfield mdl-js-textfield in-form-wrap">
                 <input class="mdl-textfield__input" type="text" id="login__username" value="DOBA">
                 <label class="mdl-textfield__label" for="login__username">Display name</label>
-            </div>
+            </div>-->
             <!-- username form ended -->
+
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect bottom-drawer add">
                 Add
             </button>
@@ -62,7 +56,7 @@
                 <div class="textinput">
                     <form id="chatform">
                         <div class="mdl-textfield mdl-js-textfield">
-                            <input class="mdl-textfield__input" type="text" id="chat" name="command" autofocus="1">
+                            <input class="mdl-textfield__input" type="text" id="chat" name="command" autofocus>
                             <label class="mdl-textfield__label" for="chat">Type here</label>
                             <button id="submit" style="display: none;">Send</button>
                         </div>
@@ -72,7 +66,6 @@
             <div id="chat-end"></div>
         </main>
     </div>
-    <script defer src="js/material.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script type="text/javascript" src="js/chat.js"></script>
 </body>
