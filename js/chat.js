@@ -6,7 +6,7 @@ function scrollToBottom() {
 // Websocket connection
 function connect(host, port) {
     // connect to server socket
-    var ws = new WebSocket('ws://' + host + ':' + '8080');
+    var ws = new WebSocket('ws://' + host + ':' + port);
     console.log(ws);
     return ws;
 }
@@ -18,6 +18,7 @@ function sendMessage(ws) {
     }
     $('#chat').val('');
     ws.send(message);
+    message = message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
     addChatLog(null, message);
 }
 function addChatLog(username, message) {
@@ -29,7 +30,7 @@ function addChatLog(username, message) {
             '<div class="bub-other-group"><div class="other-name">' +
             username +
             '</div><div class="bubble other">' +
-            text(message) +
+            message +
             '</div></div>'
         );
     }
