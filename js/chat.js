@@ -39,7 +39,7 @@ function addChatLog(username, message) {
     }
     console.log('Message received:' + message);
 }
-function login(ws, username, roomname) {
+function login(username, roomname) {
     // init websocket connection
     // var ws = connect('52.74.90.15', '8080'); // ec2-host
     var ws = connect('0.0.0.0', '8080'); // ec2-host
@@ -52,13 +52,14 @@ function login(ws, username, roomname) {
         // login prerequisite
         // while (1) {
             var data = {
-                username: $('#login__username').val(),
-                roomname: $('#login__room_id').val(),
+                username: username,
+                roomname: roomname,
                 is_newroom: 1,
                 has_pass: 0,
                 password: 'password'
             }
             ws.send(JSON.stringify(data));
+            console.log(JSON.stringify(data));
         // }
     }
     ws.onmessage = function(event) {
@@ -67,4 +68,8 @@ function login(ws, username, roomname) {
     }
 }
 
-login();
+$('#login_form').on('submit', function() {
+    var username = $('#login__username').val();
+    login(username, "global");
+})
+
