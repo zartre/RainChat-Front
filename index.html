@@ -49,21 +49,20 @@
         <main class="mdl-layout__content" id="chatwrap">
             <div class="page-content">
                 <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--12-col" style="margin-bottom:6em" id="chatlog">
+                    <div class="mdl-cell mdl-cell--12-col" style="padding-bottom:8em" id="chatlog">
                         <!-- chat log's here -->
                     </div>
                 </div>
                 <div class="textinput">
                     <form id="chatform">
                         <div class="mdl-textfield mdl-js-textfield">
-                            <input class="mdl-textfield__input" type="text" id="chat" name="command" autofocus>
+                            <input class="mdl-textfield__input" type="text" id="chat" name="command" autocomplete="false">
                             <label class="mdl-textfield__label" for="chat">Type here</label>
                             <button id="submit" style="display: none;">Send</button>
                         </div>
                     </form>
                 </div>
             </div>
-            <div id="chat-end"></div>
         </main>
         <div class="modal" v-if="!loggedIn">
             <div class="modal-box">
@@ -71,7 +70,7 @@
                 <div class="form-wrap">
                     <form action="#" v-show="mode==1">
                         <div class="mdl-textfield mdl-js-textfield in-form-wrap">
-                            <input class="mdl-textfield__input" type="text" id="login__username">
+                            <input class="mdl-textfield__input" type="text" id="login__username" autofocus>
                             <label class="mdl-textfield__label" for="login__username">Display name</label>
                         </div>
                         <div class="mdl-textfield mdl-js-textfield in-form-wrap">
@@ -116,6 +115,7 @@
             }
         })
     </script>
-    <script type="text/javascript" src="js/chat.js"></script>
+    <script src="js/visible.min.js"></script>
+    <script src="js/chat.js"></script>
 </body>
 </html>

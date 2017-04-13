@@ -1,6 +1,6 @@
 // Auto-scroll
 function scrollToBottom() {
-    $("#chatwrap").scrollTop($("#chatwrap")[0].scrollHeight);
+    $("#chatwrap").scrollTop($("#chatlog")[0].scrollHeight);
 }
 
 // Websocket connection
@@ -23,6 +23,9 @@ function sendMessage(ws) {
 }
 function addChatLog(username, message) {
     // @DOBA: do something if recieve a [message]
+    if ($('.bubble:last-of-type').visible()) {
+        scrollToBottom();
+    }
     if (username === null) {
         $('#chatlog').append('<div class="bubble me">' + message + '</div>');
     } else {
@@ -35,12 +38,11 @@ function addChatLog(username, message) {
         );
     }
     console.log('Message received:' + message);
-    scrollToBottom();
 }
 function login(ws, username, roomname) {
     // init websocket connection
-    var ws = connect('52.74.90.15', '8080'); // ec2-host
-    // var ws = connect('0.0.0.0', '8080'); // ec2-host
+    // var ws = connect('52.74.90.15', '8080'); // ec2-host
+    var ws = connect('0.0.0.0', '8080'); // ec2-host
     ws.onopen = function() {
         // @DOBA: do something when connection is established
         $('#chatform').submit(function(e) {
