@@ -1,4 +1,4 @@
-body, h1, h2, h3, h4, h5, h6, input, label, p, button {
+body, h1, h2, h3, h4, h5, h6, input, label, p, button, .mdl-snackbar {
 	font-family: "Usual", "-apple-system", "Segoe UI", "Ubuntu", sans-serif !important;
 }
 .text-center {
@@ -37,27 +37,25 @@ div.roomname {
 .mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
 	color: #000;
 }
-.bottom-drawer {
-	display: inline-block;
-	width: 50%;
-	position: absolute;
+.logout-btn {
+	display: block;
+	width: 100%;
+	position: fixed;
 	bottom: 0;
 	height: 50px;
 	box-sizing: border-box;
 	color: #fff;
+	background: rgb(255,94,84);
 	text-decoration: none;
 	text-align: center;
 	border-radius: 0;
 }
-.bottom-drawer.add {
-	background: #00b8ff;
-}
-.bottom-drawer.logout {
-	right: 0;
-	background: rgb(255, 94, 84);
+.logout-btn:hover, .logout-btn:focus:not(:active) {
+	background: rgb(245,84,74);
 }
 .online-users {
 	padding: 10px 20px 0 40px;
+	margin-bottom: 50px;
 }
 .online-users .user {
 	width: 195px;
@@ -176,6 +174,15 @@ img.launch-icon {
 }
 .in-form-wrap:last-child {
 	margin-top: 1em;
+}
+.mdl-snackbar {
+	z-index: 7;
+	background: #4584b5;
+}
+.mdl-snackbar__text {
+	text-align: center;
+	width: 100%;
+	padding: 14px 24px;
 }
 
 /* MEDIA */
