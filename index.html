@@ -35,11 +35,8 @@
             <div class="drawer-section">Online users</div>
             <hr>
             <div class="online-users">
-                <div class="user">
-                    DobaKungkasjdlakjsdlasjdlasdjlaksjdlasjdlkajsdlasjlkdjalskjd
-                </div>
-                <div class="user">
-                    DobaKung asdasd asdasdaskjksjd asdjasdkj
+                <div class="user" v-for="person in online">
+                    {{ person }}
                 </div>
             </div>
             <!-- @DOBA: here's the username form -->
@@ -125,9 +122,18 @@
                 mode: 1,
                 loggedIn: 0,
                 username: '',
-                room: ''
+                room: '',
+                online: []
+            },
+            methods: {
+                onlineList: function() {
+                    var rawJson = '{ "type": "online", "count": 3, "users": ["kavin", "doba", "coconut"]}';
+                    var parsedJson = JSON.parse(rawJson);
+                    this.online = parsedJson.users;
+                }
             }
-        })
+        });
+        app.onlineList();
     </script>
     <script src="js/visible.min.js"></script>
     <script src="js/chat.js"></script>
