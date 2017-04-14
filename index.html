@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="css/dist/chat.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script src="https://unpkg.com/vue"></script>
-    <script defer src="js/material.min.js" async></script>
+    <script src="js/material.min.js" async></script>
 </head>
 
 <body>
@@ -28,6 +28,12 @@
         <header class="mdl-layout__header">
             <div class="mdl-layout__header-row">
                 <div class="roomname">Anonymous Group</div>
+                <button id="top-menu" class="mdl-button mdl-js-button mdl-button--icon">
+                    <i class="material-icons">power_settings_new</i>
+                </button>
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="top-menu">
+                    <li class="mdl-menu__item">Logout</li>
+                </ul>
             </div>
         </header>
         <div class="mdl-layout__drawer">
@@ -41,18 +47,6 @@
                     {{ person }}
                 </div>
             </div>
-            <!-- @DOBA: here's the username form -->
-            <div class="mdl-textfield mdl-js-textfield in-form-wrap" style="display: none;">
-                <input class="mdl-textfield__input" type="text" id="login__username" v-model="username">
-                <label class="mdl-textfield__label" for="login__username">Display name</label>
-            </div>
-            <!-- username form ended -->
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect bottom-drawer add">
-                Add
-            </button>
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect bottom-drawer logout">
-                Logout
-            </button>
         </div>
         <main class="mdl-layout__content" id="chatwrap">
             <div class="page-content">
@@ -62,9 +56,9 @@
                     </div>
                 </div>
                 <div class="textinput">
-                    <form id="chatform">
+                    <form id="chatform" autocomplete="off">
                         <div class="mdl-textfield mdl-js-textfield">
-                            <input class="mdl-textfield__input" type="text" id="chat" name="command" autocomplete="false">
+                            <input class="mdl-textfield__input" type="text" id="chat" name="command">
                             <label class="mdl-textfield__label" for="chat">Type here</label>
                             <button id="submit" style="display: none;">Send</button>
                         </div>
@@ -76,21 +70,21 @@
             <div class="modal-box">
                 <img src="img/RainChat-icon.svg" alt="RainChat" class="launch-icon">
                 <div class="form-wrap">
-                    <form id="login_form" action="#" v-show="mode==1">
+                    <form id="login_form" action="#" v-show="mode==1" autocomplete="off">
                         <div class="mdl-textfield mdl-js-textfield in-form-wrap">
-                            <input class="mdl-textfield__input" type="text" id="login__username" autofocus v-model="username">
+                            <input class="mdl-textfield__input" type="text" id="login__username" maxlength="30" autofocus required v-model="username">
                             <label class="mdl-textfield__label" for="login__username">Display name</label>
                         </div>
                         <div class="mdl-textfield mdl-js-textfield in-form-wrap">
                             <input class="mdl-textfield__input" type="text" id="login__room_id" v-model="room">
                             <label class="mdl-textfield__label" for="login__room_id">Room ID</label>
                         </div>
-                        <a class="text-center in-form-wrap" @click="mode=2">or click here to create a room</a>
-                        <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--primary in-form-wrap" @click="loggedIn=1">
+                        <!-- <a class="text-center in-form-wrap" @click="mode=2">or click here to create a room</a> -->
+                        <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--primary in-form-wrap" @click="checkLogin">
                             <i class="material-icons">arrow_forward</i>
                         </button>
                     </form>
-                    <form action="#" v-show="mode==2">
+                    <!--form action="#" v-show="mode==2">
                         <div class="mdl-textfield mdl-js-textfield in-form-wrap">
                             <input class="mdl-textfield__input" type="text" id="create__room_id" pattern="[a-zA-Z0-9-_]*" v-model="room">
                             <label class="mdl-textfield__label" for="create__room_id">Room ID</label>
@@ -108,13 +102,17 @@
                         <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--primary in-form-wrap" @click="loggedIn=1">
                             <i class="material-icons">arrow_forward</i>
                         </button>
-                    </form>
+                    </form-->
                 </div>
                 <!-- END FORM-WRAP -->
             </div>
             <!-- END MODAL-BOX -->
         </div>
         <!-- END MODAL -->
+        <div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button type="button" class="mdl-snackbar__action" style="display: none;"></button>
+        </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script>
@@ -122,7 +120,7 @@
             el: '#app',
             data: {
                 mode: 1,
-                loggedIn: 0,
+                loggedIn: false,
                 username: '',
                 room: '',
                 online: []
@@ -132,9 +130,21 @@
                     var rawJson = '{ "type": "online", "count": 3, "users": ["kavin", "doba", "coconut"]}';
                     var parsedJson = JSON.parse(rawJson);
                     this.online = parsedJson.users;
+                },
+                checkLogin: function() {
+                    if (!this.username) {
+                        var notification = document.querySelector('.mdl-js-snackbar');
+                        notification.MaterialSnackbar.showSnackbar({
+                            message: 'Please enter a display name'
+                        });
+                    } else if (this.username) {
+                        this.loggedIn = true;
+                        $('input#chat').focus();
+                    }
                 }
             }
         });
+        $('input#login__username').focus();
         app.onlineList();
     </script>
     <script src="js/visible.min.js"></script>

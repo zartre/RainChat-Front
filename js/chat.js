@@ -52,7 +52,7 @@ function login(username, roomname) {
         // login prerequisite
         // while (1) {
             var data = {
-                username: username,
+                username: app.username,
                 roomname: roomname,
                 is_newroom: 1,
                 has_pass: 0,
