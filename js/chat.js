@@ -67,8 +67,7 @@ function login(username, roomname) {
         if (json.type == "message") {
             addChatLog(json.username, json.message);
         } else if (json.type == "online") {
-            // json = '{ "type": "online", "count": 3, "users": ["kavin", "doba", "coconut"]}'
-            // How do i add update this json to the side bar?
+            app.online = json.users;
         }
     }
 }
