@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +11,9 @@
     <script src="https://unpkg.com/vue"></script>
     <script defer src="js/material.min.js" async></script>
 </head>
+
 <body>
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header" id="app">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header" id="app">
         <header class="mdl-layout__header">
             <div class="mdl-layout__header-row">
                 <div class="roomname">Anonymous Group</div>
@@ -31,14 +33,12 @@
                     DobaKung asdasd asdasdaskjksjd asdjasdkj
                 </div>
             </div>
-
             <!-- @DOBA: here's the username form -->
             <div class="mdl-textfield mdl-js-textfield in-form-wrap" style="display: none;">
-                <input class="mdl-textfield__input" type="text" id="login__username" value="DOBA">
+                <input class="mdl-textfield__input" type="text" id="login__username" v-model="username">
                 <label class="mdl-textfield__label" for="login__username">Display name</label>
             </div>
             <!-- username form ended -->
-
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect bottom-drawer add">
                 Add
             </button>
@@ -70,11 +70,11 @@
                 <div class="form-wrap">
                     <form id="login_form" action="#" v-show="mode==1">
                         <div class="mdl-textfield mdl-js-textfield in-form-wrap">
-                            <input class="mdl-textfield__input" type="text" id="login__username" autofocus>
+                            <input class="mdl-textfield__input" type="text" id="login__username" autofocus v-model="username">
                             <label class="mdl-textfield__label" for="login__username">Display name</label>
                         </div>
                         <div class="mdl-textfield mdl-js-textfield in-form-wrap">
-                            <input class="mdl-textfield__input" type="text" id="login__room_id">
+                            <input class="mdl-textfield__input" type="text" id="login__room_id" v-model="room">
                             <label class="mdl-textfield__label" for="login__room_id">Room ID</label>
                         </div>
                         <a class="text-center in-form-wrap" @click="mode=2">or click here to create a room</a>
@@ -84,7 +84,7 @@
                     </form>
                     <form action="#" v-show="mode==2">
                         <div class="mdl-textfield mdl-js-textfield in-form-wrap">
-                            <input class="mdl-textfield__input" type="text" id="create__room_id" pattern="[a-zA-Z0-9-_]*">
+                            <input class="mdl-textfield__input" type="text" id="create__room_id" pattern="[a-zA-Z0-9-_]*" v-model="room">
                             <label class="mdl-textfield__label" for="create__room_id">Room ID</label>
                             <span class="mdl-textfield__error">Room ID already taken</span>
                         </div>
@@ -101,21 +101,27 @@
                             <i class="material-icons">arrow_forward</i>
                         </button>
                     </form>
-                </div><!-- END FORM-WRAP -->
-            </div><!-- END MODAL-BOX -->
-        </div><!-- END MODAL -->
+                </div>
+                <!-- END FORM-WRAP -->
+            </div>
+            <!-- END MODAL-BOX -->
+        </div>
+        <!-- END MODAL -->
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                mode: 1,
-                loggedIn: 0
-            }
-        })
+    var app = new Vue({
+        el: '#app',
+        data: {
+            mode: 1,
+            loggedIn: 0,
+            username: '',
+            room: ''
+        }
+    })
     </script>
     <script src="js/visible.min.js"></script>
     <script src="js/chat.js"></script>
 </body>
+
 </html>
