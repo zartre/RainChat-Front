@@ -64,7 +64,12 @@ function login(username, roomname) {
     }
     ws.onmessage = function(event) {
         var json = JSON.parse(event.data);
-        addChatLog(json.username, json.message);
+        if (json.type == "message") {
+            addChatLog(json.username, json.message);
+        } else if (json.type == "online") {
+            // json = '{ "type": "online", "count": 3, "users": ["kavin", "doba", "coconut"]}'
+            // How do i add update this json to the side bar?
+        }
     }
 }
 
