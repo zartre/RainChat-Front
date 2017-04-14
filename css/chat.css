@@ -95,6 +95,10 @@ div.roomname {
 .bub-other-group .other-name {
 	font-size: 0.9em;
 	color: #5f5f5f;
+	width: 200px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 .bubble.me {
 	float: right;
