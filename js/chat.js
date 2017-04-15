@@ -72,7 +72,8 @@ function login(username, roomname) {
     }
 }
 
-$('#login_form').on('submit', function() {
+$('#login_form').on('submit', function(e) {
+    e.preventDefault();
     var username = $('#login__username').val();
     login(username, "global");
 })

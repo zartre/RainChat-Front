@@ -128,7 +128,7 @@
             },
             methods: {
                 onlineList: function() {
-                    var rawJson = '{ "type": "online", "count": 3, "users": ["kavin", "doba", "coconut"]}';
+                    var rawJson = '{ "type": "online", "count": 0, "users": []}';
                     var parsedJson = JSON.parse(rawJson);
                     this.online = parsedJson.users;
                 },
