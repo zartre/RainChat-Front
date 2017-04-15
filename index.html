@@ -58,9 +58,9 @@
                 <div class="textinput">
                     <form id="chatform" autocomplete="off">
                         <div class="mdl-textfield mdl-js-textfield">
-                            <input class="mdl-textfield__input" type="text" id="chat" name="command" maxlength="8000">
-                            <label class="mdl-textfield__label" for="chat">Type here</label>
-                            <button id="submit" style="display: none;">Send</button>
+                            <input class="mdl-textfield__input" type="text" id="chat" name="command" maxlength="8000" v-bind:disabled="!loggedIn">
+                            <label class="mdl-textfield__label" for="chat">{{ typeHere }}</label>
+                            <button id="submit" style="display: none;" v-if="loggedIn && username">Send</button>
                         </div>
                     </form>
                 </div>
@@ -123,6 +123,7 @@
                 loggedIn: false,
                 username: '',
                 room: '',
+                typeHere: 'Please login first',
                 online: []
             },
             methods: {
@@ -139,6 +140,7 @@
                         });
                     } else if (this.username) {
                         this.loggedIn = true;
+                        this.typeHere = 'Type and press enter to send';
                         $('input#chat').focus();
                     }
                 }
