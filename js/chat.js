@@ -86,4 +86,11 @@ function login(ws, username, roomname) {
     }
 }
 
+var config;
+
+$.getJSON('config.json', function(response){
+   config = response;
+   console.log(config);
+})
+
 

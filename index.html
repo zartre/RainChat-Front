@@ -117,13 +117,14 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="js/visible.min.js"></script>
+    <script src="js/setting.js"></script>
     <script src="js/chat.js"></script>
     <script>
         var app = new Vue({
             el: '#app',
             data: {
-                ws: null,
                 mode: 1,
+                ws: null,
                 login_count: 0,
                 loggedIn: false,
                 username: '',
@@ -146,8 +147,7 @@
                     } else if (this.username) {
                         this.login_count++;
                         if (this.login_count == 1) {
-                            // this.ws = connect('52.74.90.15', '8080'); // ec2-host
-                            this.ws = connect('0.0.0.0', '8080'); // local
+                            this.ws = connect(config.host, config.port); // local
                             this.ws.onopen = function() {
                                 login(app.ws, app.username, "global");
                             };
