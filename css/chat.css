@@ -28,8 +28,9 @@ div.roomname {
 
 .drawer-section {
 	padding: 0 40px;
-	margin: 5px 0;
+	margin: 7px 0 5px;
 	color: #757575;
+	overflow-x: hidden;
 }
 .mdl-layout__drawer hr {
 	margin: 0 0 10px 40px;
@@ -52,6 +53,15 @@ div.roomname {
 }
 .logout-btn:hover, .logout-btn:focus:not(:active) {
 	background: rgb(245,84,74);
+}
+.welcome {
+	padding: 10px 20px 10px 40px;
+	font-weight: bold;
+	width: 240px;
+	box-sizing: border-box;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 .online-users {
 	padding: 10px 20px 0 40px;
