@@ -53,47 +53,37 @@ function ready(ws, username, roomname) {
         e.preventDefault();
         sendMessage(ws);
     });
-    this.loggedIn = true;
-    this.typeHere = 'Type and press enter to send';
+    app.loggedIn = true;
+    app.typeHere = 'Type and press enter to send';
     $('input#chat').focus();
 }
 
 function login(ws, username, roomname) {
-    // init websocket connection
-    ws.onopen = function() {
-        // @DOBA: do something when connection is established
+    var data = {
+        username: username
+    }
+    ws.send(JSON.stringify(data));
+    ws.onmessage = function(event) {
+        console.log(event.data);
 
-        // send login data
-        var data = {
-            username: username
-        }
-        ws.send(JSON.stringify(data));
-
-        ws.onmessage = function(event) {
-            console.log(event.data);
-
-            var json = JSON.parse(event.data);
-            if (json.type == "message") {
-                last_id = addChatLog(json.id, json.username, json.message);
-            } else if (json.type == "online") {
-                app.online = json.users;
-            } else if (json.type == "login") {
-                if (json.iserror) {
-                    // display login error
-                    throw json.errormsg;
-                    return;
-                } else {
-                    ready(ws, username, roomname);
-                }
+        var json = JSON.parse(event.data);
+        if (json.type == "message") {
+            last_id = addChatLog(json.id, json.username, json.message);
+        } else if (json.type == "online") {
+            app.online = json.users;
+        } else if (json.type == "login") {
+            if (json.iserror) {
+                // display login error
+                throw json.errormsg;
             } else {
-                console.log("invalid server response")
+                console.log("Logged in!")
+                ready(ws, username, roomname);
             }
-
-
+        } else {
+            console.log("invalid server response")
         }
 
     }
 }
-
 
 

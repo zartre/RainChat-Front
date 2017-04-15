@@ -146,15 +146,18 @@
                     } else if (this.username) {
                         this.login_count++;
                         if (this.login_count == 1) {
-                            var ws = connect('52.74.90.15', '8080'); // ec2-host
-                            // this.ws = connect('0.0.0.0', '8080'); // local
-                        }
-                        try {
-                            login(this.ws, app.username, "global");
-                        } catch(err) {
-                            // do something if error on logging in
-                            console.log(err);
-                            return;
+                            // this.ws = connect('52.74.90.15', '8080'); // ec2-host
+                            this.ws = connect('0.0.0.0', '8080'); // local
+                            this.ws.onopen = function() {
+                                login(app.ws, app.username, "global");
+                            };
+                        } else {
+                            try {
+                                login(this.ws, this.username, "global");
+                            } catch(err) {
+                                // do something if error on logging in
+                                console.log(err);
+                            }
                         }
                     }
                 }
