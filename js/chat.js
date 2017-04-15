@@ -65,7 +65,7 @@ function login(ws, username, roomname) {
 
         // send login data
         var data = {
-
+            username: username
         }
         ws.send(JSON.stringify(data));
 
