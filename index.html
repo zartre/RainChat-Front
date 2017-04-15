@@ -40,6 +40,7 @@
             <span class="mdl-layout-title">
                 <img src="img/logo-sidebar.png" alt="Rainy Chat">
             </span>
+            <div class="welcome" v-if="loggedIn">Welcome,<br/>{{ username }}</div>
             <div class="drawer-section">Online users</div>
             <hr>
             <div class="online-users">
