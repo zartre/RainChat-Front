@@ -71,7 +71,7 @@
             <div class="modal-box">
                 <img src="img/RainChat-icon.svg" alt="RainChat" class="launch-icon">
                 <div class="form-wrap">
-                    <form id="login_form" action="#" v-show="mode==1" autocomplete="off">
+                    <form id="login_form" v-on:submit.prevent action="#" v-show="mode==1" autocomplete="off">
                         <div class="mdl-textfield mdl-js-textfield in-form-wrap">
                             <input class="mdl-textfield__input" type="text" id="login__username" maxlength="30" autofocus required v-model="username">
                             <label class="mdl-textfield__label" for="login__username">Display name</label>
@@ -116,11 +116,15 @@
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="js/visible.min.js"></script>
+    <script src="js/chat.js"></script>
     <script>
         var app = new Vue({
             el: '#app',
             data: {
+                ws: null,
                 mode: 1,
+                login_count: 0,
                 loggedIn: false,
                 username: '',
                 room: '',
@@ -140,9 +144,18 @@
                             message: 'Please enter a display name'
                         });
                     } else if (this.username) {
-                        this.loggedIn = true;
-                        this.typeHere = 'Type and press enter to send';
-                        $('input#chat').focus();
+                        this.login_count++;
+                        if (this.login_count == 1) {
+                            var ws = connect('52.74.90.15', '8080'); // ec2-host
+                            // this.ws = connect('0.0.0.0', '8080'); // local
+                        }
+                        try {
+                            login(this.ws, app.username, "global");
+                        } catch(err) {
+                            // do something if error on logging in
+                            console.log(err);
+                            return;
+                        }
                     }
                 }
             }
@@ -150,8 +163,6 @@
         $('input#login__username').focus();
         app.onlineList();
     </script>
-    <script src="js/visible.min.js"></script>
-    <script src="js/chat.js"></script>
 </body>
 
 </html>
