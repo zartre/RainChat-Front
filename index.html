@@ -155,6 +155,10 @@
                                 login(this.ws, this.username, "global");
                             } catch(err) {
                                 // do something if error on logging in
+                                var notification = document.querySelector('.mdl-js-snackbar');
+                                notification.MaterialSnackbar.showSnackbar({
+                                    message: errormsg
+                                });
                                 console.log(err);
                             }
                         }
