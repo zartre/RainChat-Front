@@ -36,6 +36,7 @@
                     <i class="material-icons">power_settings_new</i>
                 </button>
                 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="top-menu">
+                    <li class="mdl-menu__item" @click="toggleNight">{{ darkText }}</li>
                     <li class="mdl-menu__item" onclick="location.reload()">Logout</li>
                 </ul>
             </div>
@@ -138,6 +139,8 @@
             loggedIn: false,
             username: '',
             room: '',
+            dark: false,
+            darkText: "Dark mode",
             typeHere: 'Please login first',
             online: []
         },
@@ -171,6 +174,15 @@
                             console.log(err);
                         }
                     }
+                }
+            },
+            toggleNight: function() {
+                $('body').toggleClass('night');
+                this.dark = !this.dark;
+                if (this.dark == false) {
+                    this.darkText = 'Dark mode';
+                } else {
+                    this.darkText = 'Normal';
                 }
             }
         }
