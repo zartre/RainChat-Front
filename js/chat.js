@@ -117,5 +117,3 @@ $.getJSON('config.json', function(response){
    config = response;
    console.log(config);
 })
-
-

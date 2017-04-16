@@ -218,6 +218,29 @@ img.launch-waves {
 	padding: 14px 24px;
 }
 
+/* NIGHT */
+
+body.night * {
+	background: #000;
+	color: #FFF !important;
+	border-color: #424242;
+}
+body.night .mdl-layout__header-row {
+	border-bottom: 1px solid #424242;
+}
+body.night .mdl-menu--bottom-right, body.night .mdl-menu__item, body.night .mdl-menu__item:hover {
+	background: #3c3c3c !important;
+}
+body.night .mdl-button--icon .material-icons, body.night .mdl-button--icon .material-icons:hover {
+	background: rgba(0,0,0,0) !important;
+}
+body.night .bubble.other {
+	background: #545454;
+}
+body.night .mdl-layout-title img {
+	filter: grayscale(1) brightness(2);
+}
+
 /* MEDIA */
 
 @media screen and (max-width: 1278px) {
@@ -235,7 +258,7 @@ img.launch-waves {
 	.mdl-layout-title img {
 		width: 80%;
 	}
-	.mdl-navigation span.chatrooms {
+	.mdl-navigation span.chatrooms, .welcome {
 		padding-left: 16px;
 	}
 	.mdl-navigation hr {

@@ -17,7 +17,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <title>Rainy.Chat</title>
     <link rel="stylesheet" href="css/material.min.css">
-    <link rel="stylesheet" href="css/dist/chat.css?v=1.0">
+    <link rel="stylesheet" href="css/dist/chat.css?v=1.1">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script src="https://unpkg.com/vue"></script>
     <script src="js/material.min.js" async></script>
@@ -36,6 +36,7 @@
                     <i class="material-icons">power_settings_new</i>
                 </button>
                 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="top-menu">
+                    <li class="mdl-menu__item" @click="toggleNight">{{ nightText }}</li>
                     <li class="mdl-menu__item" onclick="location.reload()">Logout</li>
                 </ul>
             </div>
@@ -138,6 +139,8 @@
             loggedIn: false,
             username: '',
             room: '',
+            night: false,
+            nightText: "Night mode",
             typeHere: 'Please login first',
             online: []
         },
@@ -171,6 +174,15 @@
                             console.log(err);
                         }
                     }
+                }
+            },
+            toggleNight: function() {
+                $('body').toggleClass('night');
+                this.night = !this.night;
+                if (this.night == false) {
+                    this.nightText = 'Night mode';
+                } else {
+                    this.nightText = 'Normal';
                 }
             }
         }
