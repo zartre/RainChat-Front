@@ -37,11 +37,13 @@ div.roomname {
 
 /* DRAWER */
 
+.mdl-layout__drawer {
+	overflow-x: hidden;
+}
 .drawer-section {
 	padding: 0 40px;
 	margin: 7px 0 5px;
 	color: #757575;
-	overflow-x: hidden;
 }
 .mdl-layout__drawer hr {
 	margin: 0 0 10px 40px;
