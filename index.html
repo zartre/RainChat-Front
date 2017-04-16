@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="css/material.min.css">
     <link rel="stylesheet" href="css/dist/chat.css?v=1.1.1">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <script src="https://unpkg.com/vue"></script>
+    <script src="js/vue.min.js"></script>
     <script src="js/material.min.js" async></script>
     <script>
         document.createElement("picture");
@@ -31,7 +31,7 @@
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header" id="app">
         <header class="mdl-layout__header no-drag">
             <div class="mdl-layout__header-row">
-                <div class="roomname">Anonymous Group</div>
+                <div class="roomname">Global Group</div>
                 <button id="top-menu" class="mdl-button mdl-js-button mdl-button--icon">
                     <i class="material-icons">more_vert</i>
                 </button>
@@ -86,37 +86,14 @@
                             <input class="mdl-textfield__input" type="text" id="login__room_id" v-model="room">
                             <label class="mdl-textfield__label" for="login__room_id">Room ID</label>
                         </div>
-                        <!-- <a class="text-center in-form-wrap" @click="mode=2">or click here to create a room</a> -->
                         <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--primary in-form-wrap" @click="checkLogin">
                             <i class="material-icons">arrow_forward</i>
                         </button>
                     </form>
-                    <!--form action="#" v-show="mode==2">
-                        <div class="mdl-textfield mdl-js-textfield in-form-wrap">
-                            <input class="mdl-textfield__input" type="text" id="create__room_id" pattern="[a-zA-Z0-9-_]*" v-model="room">
-                            <label class="mdl-textfield__label" for="create__room_id">Room ID</label>
-                            <span class="mdl-textfield__error">Room ID already taken</span>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield in-form-wrap">
-                            <input class="mdl-textfield__input" type="password" id="create__room_pwd">
-                            <label class="mdl-textfield__label" for="create__room_pwd">Password (optional)</label>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield in-form-wrap">
-                            <input class="mdl-textfield__input" type="text" id="create__room_tag">
-                            <label class="mdl-textfield__label" for="create__room_tag">Tags (optional)</label>
-                        </div>
-                        <a class="text-center in-form-wrap" @click="mode=1">or click here to join a room</a>
-                        <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--primary in-form-wrap" @click="loggedIn=1">
-                            <i class="material-icons">arrow_forward</i>
-                        </button>
-                    </form-->
                 </div>
-                <!-- END FORM-WRAP -->
             </div>
-            <!-- END MODAL-BOX -->
             <img srcset="img/wave-450.png 450w, img/wave-900.png 800w, img/wave-900.png 800w, img/wave-1300.png 1300w, img/wave-1600.png 1600w, img/wave-2000.png 2000w, img/wave-2600.png 2600w, img/wave-3200.png 3200w, img/wave-4000.png 4000w" class="launch-waves no-drag">
         </div>
-        <!-- END MODAL -->
         <div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar">
             <div class="mdl-snackbar__text"></div>
             <button type="button" class="mdl-snackbar__action" style="display: none;"></button>
@@ -124,70 +101,7 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="js/visible.min.js"></script>
-    <script src="js/chat.js?v=1.0"></script>
-    <script>
-    var app = new Vue({
-        el: '#app',
-        data: {
-            mode: 1,
-            ws: null,
-            login_count: 0,
-            loggedIn: false,
-            username: '',
-            room: '',
-            night: false,
-            nightText: "Night mode",
-            typeHere: 'Please login first',
-            online: []
-        },
-        methods: {
-            onlineList: function() {
-                var rawJson = '{ "type": "online", "count": 0, "users": []}';
-                var parsedJson = JSON.parse(rawJson);
-                this.online = parsedJson.users;
-            },
-            checkLogin: function() {
-                if (!this.username) {
-                    var notification = document.querySelector('.mdl-js-snackbar');
-                    notification.MaterialSnackbar.showSnackbar({
-                        message: 'Please enter a display name'
-                    });
-                } else if (this.username) {
-                    this.login_count++;
-                    if (this.login_count == 1) {
-                        this.ws = connect(config.host, config.port); // local
-                        this.ws.onopen = function() {
-                            login(app.ws, app.username, "global");
-                        };
-                        this.ws.onmessage = function(event) {
-                            listen(app.ws, app.username, app.roomname, event.data);
-                        }
-                    } else {
-                        try {
-                            login(this.ws, this.username, "global");
-                        } catch (err) {
-                            // do something if error on logging in
-                            console.log(err);
-                        }
-                    }
-                }
-            },
-            toggleNight: function() {
-                $('body').toggleClass('night');
-                this.night = !this.night;
-                if (this.night == false) {
-                    this.nightText = 'Night mode';
-                    $('meta[name="theme-color"]').attr('content', '#00b8ff');
-                } else {
-                    this.nightText = 'Normal';
-                    $('meta[name="theme-color"]').attr('content', '#000');
-                }
-            }
-        }
-    });
-    $('input#login__username').focus();
-    app.onlineList();
-    </script>
+    <script src="js/chat.js?v=1.1"></script>
 </body>
 
 </html>

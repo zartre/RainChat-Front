@@ -114,7 +114,71 @@ function login(ws, username, roomname) {
 
 var config;
 
-$.getJSON('config.json', function(response){
-   config = response;
-   console.log(config);
+$.getJSON('config.json', function(response) {
+    config = response;
+    console.log(config);
 })
+
+// Vue
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        mode: 1,
+        ws: null,
+        login_count: 0,
+        loggedIn: false,
+        username: '',
+        room: '',
+        night: false,
+        nightText: "Night mode",
+        typeHere: 'Please login first',
+        online: []
+    },
+    methods: {
+        onlineList: function() {
+            var rawJson = '{ "type": "online", "count": 0, "users": []}';
+            var parsedJson = JSON.parse(rawJson);
+            this.online = parsedJson.users;
+        },
+        checkLogin: function() {
+            if (!this.username) {
+                var notification = document.querySelector('.mdl-js-snackbar');
+                notification.MaterialSnackbar.showSnackbar({
+                    message: 'Please enter a display name'
+                });
+            } else if (this.username) {
+                this.login_count++;
+                if (this.login_count == 1) {
+                    this.ws = connect(config.host, config.port); // local
+                    this.ws.onopen = function() {
+                        login(app.ws, app.username, "global");
+                    };
+                    this.ws.onmessage = function(event) {
+                        listen(app.ws, app.username, app.roomname, event.data);
+                    }
+                } else {
+                    try {
+                        login(this.ws, this.username, "global");
+                    } catch (err) {
+                        // do something if error on logging in
+                        console.log(err);
+                    }
+                }
+            }
+        },
+        toggleNight: function() {
+            $('body').toggleClass('night');
+            this.night = !this.night;
+            if (this.night == false) {
+                this.nightText = 'Night mode';
+                $('meta[name="theme-color"]').attr('content', '#00b8ff');
+            } else {
+                this.nightText = 'Normal';
+                $('meta[name="theme-color"]').attr('content', '#000');
+            }
+        }
+    }
+});
+$('input#login__username').focus();
+app.onlineList();
