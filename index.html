@@ -65,7 +65,7 @@
                 <div class="textinput">
                     <form id="chatform" autocomplete="off">
                         <div class="mdl-textfield mdl-js-textfield">
-                            <input class="mdl-textfield__input" type="text" id="chat" name="command" maxlength="8000" v-bind:disabled="!loggedIn">
+                            <input class="mdl-textfield__input" type="text" id="chat" name="command" maxlength="1200" v-bind:disabled="!loggedIn">
                             <label class="mdl-textfield__label" for="chat">{{ typeHere }}</label>
                             <button id="submit" style="display: none;" v-if="loggedIn && username">Send</button>
                         </div>
