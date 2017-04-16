@@ -4,6 +4,17 @@ body, h1, h2, h3, h4, h5, h6, input, label, p, button, .mdl-snackbar {
 .text-center {
 	text-align: center;
 }
+.no-drag {
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-drag: none;
+	-webkit-user-drag: none;
+	-moz-user-drag: none;
+	-ms-user-drag: none;
+	cursor: default;
+}
 
 /* TITLE AND NAV */
 
@@ -172,10 +183,6 @@ img.launch-icon {
 	height: 47px;
 	margin: 30px auto 0;
 	display: block;
-	user-select: none;
-	-webkit-user-select: none;
-	user-drag: none;
-	-webkit-user-drag: none;
 }
 img.launch-waves {
 	display: block;
