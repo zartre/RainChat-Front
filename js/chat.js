@@ -28,6 +28,7 @@ function sendMessage(ws) {
 
 function addChatLog(id, username, message) {
     // @DOBA: do something if recieve a [message]
+    message = message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
     if ($('.bubble:last-of-type').visible()) {
         scrollToBottom();
     }
