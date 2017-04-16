@@ -112,9 +112,12 @@ function login(ws, username, roomname) {
     ws.send(JSON.stringify(data));
 }
 
-var config;
 
-$.getJSON('config.json', function(response) {
+config = {
+    host: "0.0.0.0",
+    port: "8000"
+};
+getJSON('config.json', function(response) {
     config = response;
     console.log(config);
 })
