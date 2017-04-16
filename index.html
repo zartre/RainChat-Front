@@ -33,7 +33,7 @@
             <div class="mdl-layout__header-row">
                 <div class="roomname">Anonymous Group</div>
                 <button id="top-menu" class="mdl-button mdl-js-button mdl-button--icon">
-                    <i class="material-icons">power_settings_new</i>
+                    <i class="material-icons">more_vert</i>
                 </button>
                 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="top-menu">
                     <li class="mdl-menu__item" @click="toggleNight">{{ nightText }}</li>
@@ -75,11 +75,7 @@
         </main>
         <div class="modal" v-if="!loggedIn">
             <div class="modal-box">
-                <picture>
-                    <source type="image/svg+xml" srcset="img/RainyChat-icon.svg">
-                    <source srcset="img/RainyChat-icon.png">
-                    <img src="img/RainyChat-icon.png" alt="Rainy.Chat" class="launch-icon no-drag">
-                </picture>
+                <img src="img/logo-sidebar.png" alt="Rainy.Chat" class="launch-icon no-drag">
                 <div class="form-wrap">
                     <form id="login_form" v-on:submit.prevent action="#" v-show="mode==1" autocomplete="off">
                         <div class="mdl-textfield mdl-js-textfield in-form-wrap">
@@ -181,8 +177,10 @@
                 this.night = !this.night;
                 if (this.night == false) {
                     this.nightText = 'Night mode';
+                    $('meta[name="theme-color"]').attr('content', '#00b8ff');
                 } else {
                     this.nightText = 'Normal';
+                    $('meta[name="theme-color"]').attr('content', '#000');
                 }
             }
         }
