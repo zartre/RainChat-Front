@@ -234,6 +234,12 @@ body.night .mdl-menu--bottom-right, body.night .mdl-menu__item, body.night .mdl-
 body.night .mdl-button--icon .material-icons, body.night .mdl-button--icon .material-icons:hover {
 	background: rgba(0,0,0,0) !important;
 }
+body.night .bubble.other {
+	background: #545454;
+}
+body.night .mdl-layout-title img {
+	filter: grayscale(1) brightness(2);
+}
 
 /* MEDIA */
 
@@ -252,7 +258,7 @@ body.night .mdl-button--icon .material-icons, body.night .mdl-button--icon .mate
 	.mdl-layout-title img {
 		width: 80%;
 	}
-	.mdl-navigation span.chatrooms {
+	.mdl-navigation span.chatrooms, .welcome {
 		padding-left: 16px;
 	}
 	.mdl-navigation hr {
