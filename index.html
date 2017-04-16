@@ -15,7 +15,7 @@
     <meta name="theme-color" content="#00b8ff">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <title>Rain Chat</title>
+    <title>Rainy.Chat</title>
     <link rel="stylesheet" href="css/material.min.css">
     <link rel="stylesheet" href="css/dist/chat.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -25,7 +25,7 @@
 
 <body>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header" id="app">
-        <header class="mdl-layout__header">
+        <header class="mdl-layout__header no-drag">
             <div class="mdl-layout__header-row">
                 <div class="roomname">Anonymous Group</div>
                 <button id="top-menu" class="mdl-button mdl-js-button mdl-button--icon">
@@ -36,9 +36,9 @@
                 </ul>
             </div>
         </header>
-        <div class="mdl-layout__drawer">
+        <div class="mdl-layout__drawer no-drag">
             <span class="mdl-layout-title">
-                <img src="img/logo-sidebar.png" alt="Rainy Chat">
+                <img src="img/logo-sidebar.png" alt="Rainy.Chat" class="no-drag">
             </span>
             <div class="welcome" v-if="loggedIn">Welcome,
                 <br/>{{ username }}</div>
@@ -70,7 +70,11 @@
         </main>
         <div class="modal" v-if="!loggedIn">
             <div class="modal-box">
-                <img src="img/RainChat-icon.svg" alt="RainChat" class="launch-icon">
+                <picture>
+                    <source type="image/svg+xml" srcset="img/RainyChat-icon.svg">
+                    <source srcset="img/RainyChat-icon.png">
+                    <img src="img/RainyChat-icon.png" alt="Rainy.Chat" class="launch-icon no-drag">
+                </picture>
                 <div class="form-wrap">
                     <form id="login_form" v-on:submit.prevent action="#" v-show="mode==1" autocomplete="off">
                         <div class="mdl-textfield mdl-js-textfield in-form-wrap">
@@ -111,7 +115,7 @@
             <!-- END MODAL-BOX -->
             <picture>
                 <source srcset="img/launch-waves.png 1x, img/launch-waves-2x.png 2x">
-                <img src="img/launch-waves.png" class="launch-waves">
+                <img src="img/launch-waves.png" class="launch-waves no-drag">
             </picture>
         </div>
         <!-- END MODAL -->
