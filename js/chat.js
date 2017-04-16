@@ -65,23 +65,34 @@ function login(ws, username, roomname) {
     }
     ws.send(JSON.stringify(data));
     ws.onmessage = function(event) {
+        // do something when receive message
         console.log(event.data);
-
         var json = JSON.parse(event.data);
-        if (json.type == "message") {
+        if (json.type == 'message') {
+            // plain message
             last_id = addChatLog(json.id, json.username, json.message);
-        } else if (json.type == "online") {
+        } else if (json.type == 'online') {
+            // online users status
+            if ('added' in json) {
+                // if user added
+                console.log(json.added + ' joined the room');
+            }
+            if ('removed' in json) {
+                // if user removed
+                console.log(json.removed + ' left the room');
+            }
             app.online = json.users;
-        } else if (json.type == "login") {
+        } else if (json.type == 'login') {
+            // login verification
             if (json.iserror) {
                 // display login error
                 throw json.errormsg;
             } else {
-                console.log("Logged in!")
+                console.log('Logged in!')
                 ready(ws, username, roomname);
             }
         } else {
-            console.log("invalid server response")
+            console.log('invalid server response')
         }
 
     }
