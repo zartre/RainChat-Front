@@ -59,43 +59,53 @@ function ready(ws, username, roomname) {
     $('input#chat').focus();
 }
 
+function listen(ws, username, roomname, message) {
+    // do something when receive message
+    console.log(message);
+    var json = JSON.parse(message);
+    if (json.type == 'message') {
+        // plain message
+        last_id = addChatLog(json.id, json.username, json.message);
+    } else if (json.type == 'online') {
+        // online users status
+        var notification = document.querySelector('.mdl-js-snackbar');
+        if ('added' in json && json.added != username) {
+            // do something if user added
+            notification.MaterialSnackbar.showSnackbar({
+                message: json.added + ' joined the room'
+            });
+        }
+        if ('removed' in json) {
+            // do something if user removed
+            notification.MaterialSnackbar.showSnackbar({
+                message: json.removed + ' left the room'
+            });
+        }
+        app.online = json.users;
+    } else if (json.type == 'login') {
+        // login verification
+        if (json.iserror) {
+            // display login error
+            var notification = document.querySelector('.mdl-js-snackbar');
+            notification.MaterialSnackbar.showSnackbar({
+                message: json.errormsg
+            });
+            throw json.errormsg;
+        } else {
+            console.log('Logged in!')
+            ready(ws, username, roomname);
+        }
+    } else {
+        console.log('invalid server response')
+    }
+
+}
+
 function login(ws, username, roomname) {
     var data = {
         username: username
     }
     ws.send(JSON.stringify(data));
-    ws.onmessage = function(event) {
-        // do something when receive message
-        console.log(event.data);
-        var json = JSON.parse(event.data);
-        if (json.type == 'message') {
-            // plain message
-            last_id = addChatLog(json.id, json.username, json.message);
-        } else if (json.type == 'online') {
-            // online users status
-            if ('added' in json) {
-                // if user added
-                console.log(json.added + ' joined the room');
-            }
-            if ('removed' in json) {
-                // if user removed
-                console.log(json.removed + ' left the room');
-            }
-            app.online = json.users;
-        } else if (json.type == 'login') {
-            // login verification
-            if (json.iserror) {
-                // display login error
-                throw json.errormsg;
-            } else {
-                console.log('Logged in!')
-                ready(ws, username, roomname);
-            }
-        } else {
-            console.log('invalid server response')
-        }
-
-    }
 }
 
 var config;

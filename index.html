@@ -160,15 +160,14 @@
                         this.ws.onopen = function() {
                             login(app.ws, app.username, "global");
                         };
+                        this.ws.onmessage = function(event) {
+                            listen(app.ws, app.username, app.roomname, event.data);
+                        }
                     } else {
                         try {
                             login(this.ws, this.username, "global");
                         } catch (err) {
                             // do something if error on logging in
-                            var notification = document.querySelector('.mdl-js-snackbar');
-                            notification.MaterialSnackbar.showSnackbar({
-                                message: errormsg
-                            });
                             console.log(err);
                         }
                     }
