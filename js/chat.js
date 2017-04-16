@@ -1,5 +1,5 @@
-
 var last_id = -1;
+var notiSound = new Audio('noti.mp3');
 
 // Auto-scroll
 function scrollToBottom() {
@@ -43,6 +43,9 @@ function addChatLog(id, username, message) {
         $('#chatlog').append(
             '<div class="bub-other-group">' + innerUser + innerMessage + '</div>'
         );
+        if (!document.hasFocus()) {
+            notiSound.play();
+        }
     }
     console.log('Message received: ' + message);
     return id;
