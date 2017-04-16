@@ -181,8 +181,10 @@
                 this.night = !this.night;
                 if (this.night == false) {
                     this.nightText = 'Night mode';
+                    $('meta[name="theme-color"]').attr('content', '#00b8ff');
                 } else {
                     this.nightText = 'Normal';
+                    $('meta[name="theme-color"]').attr('content', '#000');
                 }
             }
         }
