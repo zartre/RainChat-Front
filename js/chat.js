@@ -52,6 +52,7 @@ function ready(ws, username, roomname) {
     $('#chatform').submit(function(e) {
         e.preventDefault();
         sendMessage(ws);
+        last_id = -1;
     });
     app.loggedIn = true;
     app.typeHere = 'Type and press enter to send';
