@@ -116,6 +116,7 @@ var config;
 
 $.getJSON('config.json', function(response) {
     config = response;
+    app.config = config;
     console.log(config);
 })
 
@@ -133,7 +134,8 @@ var app = new Vue({
         night: false,
         nightText: "Night mode",
         typeHere: 'Please login first',
-        online: []
+        online: [],
+        config: null
     },
     methods: {
         onlineList: function() {
@@ -180,5 +182,7 @@ var app = new Vue({
         }
     }
 });
+
 $('input#login__username').focus();
+
 app.onlineList();

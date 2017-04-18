@@ -29,6 +29,14 @@
 
 <body>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header" id="app">
+        @if (substr(url('/'), -3, 3) == 'dev')
+            <div style="position: absolute; left: 20px; bottom: 20px; z-index: 10">
+            Development Mode<br>
+            url: {{ url('/') }}<br>
+            host: @{{ config.host }}<br>
+            port: @{{ config.port }}
+            </div>
+        @endif
         <header class="mdl-layout__header no-drag">
             <div class="mdl-layout__header-row">
                 <div class="roomname">Global Group</div>
