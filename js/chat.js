@@ -29,11 +29,11 @@ function sendMessage(ws) {
 function addChatLog(id, username, message) {
     // @DOBA: do something if recieve a [message]
     message = message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    if ($('.bubble:last-of-type').visible()) {
+    if ($('.scroll:last-of-type').visible()) {
         scrollToBottom();
     }
     if (username === null) {
-        $('#chatlog').append('<div class="bubble me">' + message + '</div>');
+        $('#chatlog').append('<div class="scroll bubble me">' + message + '</div>');
     } else {
         var innerMessage = '<div class="bubble other">' + message + '</div>';
         if (id == last_id) {
@@ -42,7 +42,7 @@ function addChatLog(id, username, message) {
             var innerUser = '<div class="other-name">' + username + '</div>';
         }
         $('#chatlog').append(
-            '<div class="bub-other-group">' + innerUser + innerMessage + '</div>'
+            '<div class="scroll bub-other-group">' + innerUser + innerMessage + '</div>'
         );
         if (!document.hasFocus()) {
             notiSound.play();
