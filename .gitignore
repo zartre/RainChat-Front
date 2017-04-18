@@ -1,2 +1,11 @@
-node_modules/*
-config.json
+/node_modules
+/public/hot
+/public/storage
+/public/config.json
+/storage/*.key
+/vendor
+/.idea
+/.vagrant
+Homestead.json
+Homestead.yaml
+.env
