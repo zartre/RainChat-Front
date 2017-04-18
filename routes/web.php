@@ -12,7 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('chat');
+});
+
+Route::get('/dev', function () {
+    return view('dev/chat');
 });
 
 // Google Webmaster verification
