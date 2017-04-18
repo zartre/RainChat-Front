@@ -23,3 +23,7 @@ Route::get('/dev', function () {
 Route::get('/googled63a3a7848bbc072.html', function () {
     return view('config/googled63a3a7848bbc072');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
