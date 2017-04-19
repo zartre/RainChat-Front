@@ -20,7 +20,7 @@ function addChatLog(id, username, message) {
     if ($('.bubble:last-of-type').visible()) {
         scrollToBottom();
     }
-    if (username ==== null) {
+    if (username === null) {
         $('#chatlog').append('<div class="bubble me">' + message + '</div>');
     } else {
         var innerMessage = '<div class="bubble other">' + message + '</div>';

@@ -1,15 +1,25 @@
 $primary-color: rgb(2,103,255);
 $secondary-color: rgb(56,202,255);
 $primary-shadow: 0 8px 30px rgba(2,103,255,0.1);
+$btn-shadow: 0px 4px 10px rgba(2,103,255,0.3);
 $my-bubble: #E6F0FF;
 
+@font-face {
+	font-family: 'Stolzl';
+	src: url('fonts/33859F_0_0.eot');
+	src: url('fonts/33859F_0_0.eot?#iefix') format('embedded-opentype'),
+	url('fonts/33859F_0_0.woff2') format('woff2'),
+	url('fonts/33859F_0_0.woff') format('woff'),
+	url('fonts/33859F_0_0.ttf') format('truetype');
+}
 
 html, body {
 	margin: 0;
 	height: 100%;
 	font-family: "-apple-system", "Helvetica Neue", "Segoe UI", "Ubuntu", sans-serif;
+	text-rendering: optimizeLegibility;
 }
-h1, a.button {
+h1 {
 	font-family: "Stolzl", sans-serif;
 }
 
@@ -31,7 +41,7 @@ header {
 	display: flex;
 	height: 66px;
 	align-items: center;
-	font-family: "Stolzl";
+	font-family: "Stolzl", sans-serif;
 	padding: 0 20px;
 	background: #fff;
 	box-shadow: $primary-shadow;
@@ -123,18 +133,83 @@ header {
 	}
 }
 .welcome {
-	font-family: "Stolzl";
+	font-family: "Stolzl", sans-serif;
 	font-size: 16px;
 	margin: 36px 0 0;
 }
 .online {
 	margin-top: 36px;
 	.heading {
-		font-family: "Stolzl";
+		font-family: "Stolzl", sans-serif;
 		margin-bottom: 10px;
 	}
 	.user {
 		margin-bottom: 6px;
+	}
+}
+
+/* MODAL */
+
+.modal {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	background: linear-gradient(135deg, $primary-color, $secondary-color);
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 4;
+	.box {
+		background: #fff;
+		border-radius: 5px;
+		display: inline-block;
+		padding: 1.8em;
+		margin: auto;
+		box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+		h1 {
+			color: $primary-color;
+			font-size: 1.2em;
+			font-family: "Stolzl", sans-serif;
+			margin: 0;
+		}
+	}
+}
+input {
+	display: block;
+	box-sizing: border-box;
+	padding-bottom: 4px;
+	width: 100%;
+	border: none;
+	border-bottom: 2px solid $primary-color;
+	font-size: 1em;
+	margin: 1.5em 0;
+	&:focus {
+		outline: none;
+	}
+}
+button.styled {
+	display: block;
+	width: 100%;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-family: "Stolzl", sans-serif;
+	font-size: 1em;
+	color: #fff;
+	box-shadow: $btn-shadow;
+	padding: 0.6em;
+	background: linear-gradient(135deg, $primary-color, $secondary-color);
+	transition: all 0.2s;
+	&:hover, &:focus {
+		outline: none;
+		transform: translateY(-2px);
+		box-shadow: 0px 6px 20px rgba(2,103,255,0.3);
+	}
+	&:active {
+		outline: none;
+		box-shadow: none;
+		transform: translateY(2px);
 	}
 }
 
@@ -168,7 +243,7 @@ header {
 	input {
 		flex: 1;
 		height: 30px;
-		font-size: 16px;
+		font-size: 1em;
 		border: none;
 		border-bottom: 2px solid $primary-color;
 		margin: 0;

@@ -26,7 +26,14 @@
 </head>
 
 <body>
-<div id="app" style="height:100%;">
+    <div id="app" style="height:100%;">
+        <div class="modal" v-if="!loggedIn">
+            <div class="box">
+                <h1>Enter a display name</h1>
+                <input type="text" placeholder="Display name">
+                <button class="styled" @click="loggedIn=true">Log in</button>
+            </div>
+        </div>
         <div class="drawer" v-bind:class="{active: drawerOpen}">
             <img src="{{ asset('img/sidebar-white.svg') }}" alt="RainyChat" class="logo">
             <div class="welcome">
