@@ -4,25 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta property="og:image" content="img/ogimage.jpg">
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" href="favicon/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="favicon/favicon-16x16.png" sizes="16x16">
-    <link rel="manifest" href="favicon/manifest.json?v=1.0">
-    <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
-    <link rel="shortcut icon" href="favicon/favicon.ico">
-    <meta name="msapplication-config" content="favicon/browserconfig.xml?v=1.0">
+    <meta property="og:image" content="{{ asset('img/ogimage.jpg') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('favicon/favicon-32x32.png') }}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{ asset('favicon/favicon-16x16.png') }}" sizes="16x16">
+    <link rel="manifest" href="{{ asset('favicon/manifest.json?v=1.0') }}">
+    <link rel="mask-icon" href="{{ asset('favicon/safari-pinned-tab.svg') }}" color="#5bbad5">
+    <link rel="shortcut icon" href="{{ asset('favicon/favicon.ico') }}">
+    <meta name="msapplication-config" content="{{ asset('favicon/browserconfig.xml?v=1.0') }}">
     <meta name="theme-color" content="#00b8ff">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <title>Rainy.Chat</title>
-    <link rel="stylesheet" href="css/chat.css">
+    <link rel="stylesheet" href="{{ asset('css/chat.css') }}">
     <script src="https://unpkg.com/vue"></script>
     {{-- <script src="js/vue.min.js"></script> --}}
     <script>
         document.createElement("picture");
     </script>
-    <script src="js/picturefill.min.js" async></script>
+    <script src="{{ asset('js/picturefill.min.js') }}" async></script>
 </head>
 
 <body>
@@ -87,7 +87,7 @@
             <div class="chat-box">
                 <input type="text" placeholder="Type here">
                 <button class="submit-btn">
-                    <img src="img/i-send.svg" alt="Send">
+                    <img src="{{ asset('img/i-send.svg') }}" alt="Send">
                 </button>
             </div>
         </div>
