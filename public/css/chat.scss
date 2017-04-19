@@ -6,11 +6,11 @@ $my-bubble: #E6F0FF;
 
 @font-face {
 	font-family: 'Stolzl';
-	src: url('fonts/33859F_0_0.eot');
-	src: url('fonts/33859F_0_0.eot?#iefix') format('embedded-opentype'),
-	url('fonts/33859F_0_0.woff2') format('woff2'),
-	url('fonts/33859F_0_0.woff') format('woff'),
-	url('fonts/33859F_0_0.ttf') format('truetype');
+	src: url('../fonts/33859F_0_0.eot');
+	src: url('../fonts/33859F_0_0.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/33859F_0_0.woff2') format('woff2'),
+	url('../fonts/33859F_0_0.woff') format('woff'),
+	url('../fonts/33859F_0_0.ttf') format('truetype');
 }
 
 html, body {
@@ -169,6 +169,7 @@ header {
 		box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 		h1 {
 			color: $primary-color;
+			text-align: center;
 			font-size: 1.2em;
 			font-family: "Stolzl", sans-serif;
 			margin: 0;
