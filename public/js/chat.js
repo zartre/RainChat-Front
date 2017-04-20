@@ -3,7 +3,7 @@ var notiSound = new Audio('noti.mp3');
 
 // Auto-scroll
 function scrollToBottom() {
-    $("#chatwrap").scrollTop($("#chatlog")[0].scrollHeight);
+    $("#chatlog").scrollTop($("#chatlog")[0].scrollHeight);
 }
 
 // Websocket connection
@@ -12,6 +12,33 @@ function connect(host, port) {
     var ws = new WebSocket('ws://' + host + ':' + port);
     console.log(ws);
     return ws;
+}
+
+function addChatLog(id, username, message) {
+    // @DOBA: do something if recieve a [message]
+    message = message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    if (username === null) {
+        $('#chatlog').append('<div class="b bubble me">' + message + '</div>');
+        scrollToBottom();
+    } else {
+        var innerMessage = '<div class="bubble other">' + message + '</div>';
+        if (id === last_id) {
+            var innerUser = '';
+        } else {
+            var innerUser = '<div class="other-name">' + username + '</div>';
+        }
+        $('#chatlog').append(
+            '<div class="b bub-other-group">' + innerUser + innerMessage + '</div>'
+        );
+        if ($('.b:last-child').visible()) {
+            scrollToBottom();
+        }
+        if (!document.hasFocus()) {
+            notiSound.play();
+        }
+    }
+    console.log('Message received: ' + message);
+    return id;
 }
 
 function sendMessage(ws) {
@@ -24,32 +51,6 @@ function sendMessage(ws) {
     ws.send(message);
     message = message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
     addChatLog(-1, null, message);
-}
-
-function addChatLog(id, username, message) {
-    // @DOBA: do something if recieve a [message]
-    message = message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    if ($('.bubble:last-of-type').visible()) {
-        scrollToBottom();
-    }
-    if (username === null) {
-        $('#chatlog').append('<div class="bubble me">' + message + '</div>');
-    } else {
-        var innerMessage = '<div class="bubble other">' + message + '</div>';
-        if (id == last_id) {
-            var innerUser = '';
-        } else {
-            var innerUser = '<div class="other-name">' + username + '</div>';
-        }
-        $('#chatlog').append(
-            '<div class="bub-other-group">' + innerUser + innerMessage + '</div>'
-        );
-        if (!document.hasFocus()) {
-            notiSound.play();
-        }
-    }
-    console.log('Message received: ' + message);
-    return id;
 }
 
 function ready(ws, username, roomname) {
@@ -67,11 +68,12 @@ function listen(ws, username, roomname, message) {
     // do something when receive message
     console.log(message);
     var json = JSON.parse(message);
-    if (json.type == 'message') {
+    if (json.type === 'message') {
         // plain message
         last_id = addChatLog(json.id, json.username, json.message);
-    } else if (json.type == 'online') {
+    } else if (json.type === 'online') {
         // online users status
+        console.log(json);
         var notification = document.querySelector('.mdl-js-snackbar');
         if ('added' in json && json.added != username) {
             // do something if user added
@@ -86,14 +88,11 @@ function listen(ws, username, roomname, message) {
             });
         }
         app.online = json.users;
-    } else if (json.type == 'login') {
+    } else if (json.type === 'login') {
         // login verification
         if (json.iserror) {
             // display login error
-            var notification = document.querySelector('.mdl-js-snackbar');
-            notification.MaterialSnackbar.showSnackbar({
-                message: json.errormsg
-            });
+            app.loginErrMsg = json.errormsg;
             throw json.errormsg;
         } else {
             console.log('Logged in!')
@@ -119,15 +118,17 @@ var config;
 var app = new Vue({
     el: '#app',
     data: {
-        mode: 1,
         ws: null,
         login_count: 0,
         loggedIn: false,
+        loginErrMsg: '',
         username: '',
         room: '',
+        drawerOpen: false,
+        menuOpen: false,
+        inputBox: 'Please log in first',
         night: false,
         nightText: "Night mode",
-        typeHere: 'Please login first',
         online: [],
         config: null
     },
@@ -139,13 +140,10 @@ var app = new Vue({
         },
         checkLogin: function() {
             if (!this.username) {
-                var notification = document.querySelector('.mdl-js-snackbar');
-                notification.MaterialSnackbar.showSnackbar({
-                    message: 'Please enter a display name'
-                });
+                this.loginErrMsg = 'Please enter a display name';
             } else if (this.username) {
                 this.login_count++;
-                if (this.login_count == 1) {
+                if (this.login_count === 1) {
                     this.ws = connect(config.host, config.port); // local
                     this.ws.onopen = function() {
                         login(app.ws, app.username, "global");
@@ -153,6 +151,7 @@ var app = new Vue({
                     this.ws.onmessage = function(event) {
                         listen(app.ws, app.username, app.roomname, event.data);
                     }
+                    this.inputBox = 'Type here';
                 } else {
                     try {
                         login(this.ws, this.username, "global");
@@ -166,7 +165,7 @@ var app = new Vue({
         toggleNight: function() {
             $('body').toggleClass('night');
             this.night = !this.night;
-            if (this.night == false) {
+            if (this.night === false) {
                 this.nightText = 'Night mode';
                 $('meta[name="theme-color"]').attr('content', '#00b8ff');
             } else {
@@ -176,8 +175,6 @@ var app = new Vue({
         }
     }
 });
-
-$('input#login__username').focus();
 
 app.onlineList();
 
