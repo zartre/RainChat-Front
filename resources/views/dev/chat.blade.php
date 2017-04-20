@@ -17,8 +17,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <title>Rainy.Chat</title>
     <link rel="stylesheet" href="{{ asset('css/chat.css') }}">
-    <script src="https://unpkg.com/vue"></script>
-    {{-- <script src="js/vue.min.js"></script> --}}
+    {{-- <script src="https://unpkg.com/vue"></script> --}}
+    <script src="{{ asset('js/vue.min.js') }}"></script>
     <script>
         document.createElement("picture");
     </script>
@@ -30,22 +30,22 @@
         <div class="modal" v-if="!loggedIn">
             <div class="box">
                 <h1>Enter a display name</h1>
-                <input type="text" placeholder="Display name">
-                <button class="styled" @click="loggedIn=true">Log in</button>
+                <input type="text" placeholder="Display name" v-model="username" autofocus>
+                <label>@{{ loginErrMsg }}</label>
+                <button class="styled" @click="checkLogin">Log in</button>
             </div>
         </div>
         <div class="drawer" v-bind:class="{active: drawerOpen}">
             <img src="{{ asset('img/sidebar-white.png') }}" alt="RainyChat" class="logo">
-            <div class="welcome">
-                Welcome,<br>Nathan
+            <div class="welcome" v-if="loggedIn">
+                Welcome,<br>
+                @{{ username }}
             </div>
             <div class="online">
                 <div class="heading">
                     Online users
                 </div>
-                <div class="user">DobaKung</div>
-                <div class="user">DobaKung</div>
-                <div class="user">DobaKung</div>
+                <div class="user" v-for="person in online">@{{ person }}</div>
             </div>
         </div>
         <div class="drawer-bg" v-bind:class="{active: drawerOpen}" @click="drawerOpen=false"></div>
@@ -62,41 +62,15 @@
                     <a href="#">Logout</a>
                 </div>
             </header>
-            <div class="chat-wrap">
-                <div class="bubble me">Lorem ipsum dolor sit amet</div>
-                <div class="bub-other-group">
-                    <div class="other-name">Doba</div>
-                    <div class="bubble other">Lorem ipsum dolor sit amet</div>
-                </div>
-                <div class="bub-other-group">
-                    <div class="bubble other">Lorem ipsum dolor sit amet</div>
-                </div>
-                <div class="bubble me">Lorem ipsum dolor sit amet</div>
-                <div class="bubble me">Lorem ipsum dolor sit amet</div>
-                <div class="bub-other-group">
-                    <div class="other-name">Doba</div>
-                    <div class="bubble other">Lorem ipsum dolor sit amet</div>
-                </div>
-                <div class="bub-other-group">
-                    <div class="bubble other">Lorem ipsum dolor sit amet</div>
-                </div>
-                <div class="bubble me">Lorem ipsum dolor sit amet</div>
-                <div class="bubble me">Lorem ipsum dolor sit amet</div>
-                <div class="bub-other-group">
-                    <div class="other-name">Doba</div>
-                    <div class="bubble other">Lorem ipsum dolor sit amet</div>
-                </div>
-                <div class="bub-other-group">
-                    <div class="bubble other">Lorem ipsum dolor sit amet</div>
-                </div>
-                <div class="bubble me">Lorem ipsum dolor sit amet</div>
+            <div class="chat-wrap" id="chatlog">
+                {{-- chats are here --}}
             </div>
-            <div class="chat-box">
-                <input type="text" placeholder="Type here">
-                <button class="submit-btn">
+            <form class="chat-box" id="chatform" autocomplete="off">
+                <input type="text" v-bind="{placeholder: inputBox, disabled: !loggedIn}" id="chat" name="command" maxlength="1200">
+                <button type="submit" class="submit-btn" v-if="loggedIn && username">
                     <img src="{{ asset('img/i-send.svg') }}" alt="Send">
                 </button>
-            </div>
+            </form>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
