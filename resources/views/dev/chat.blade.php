@@ -19,10 +19,6 @@
     <link rel="stylesheet" href="{{ asset('css/chat.css') }}">
     {{-- <script src="https://unpkg.com/vue"></script> --}}
     <script src="{{ asset('js/vue.min.js') }}"></script>
-    <script>
-        document.createElement("picture");
-    </script>
-    <script src="{{ asset('js/picturefill.min.js') }}" async></script>
 </head>
 
 <body>
@@ -30,7 +26,7 @@
         <div class="modal" v-if="!loggedIn">
             <form class="box" id="login_form" v-on:submit.prevent>
                 <h1>Enter a display name</h1>
-                <input type="text" placeholder="Display name" v-model="username" autofocus required="">
+                <input type="text" placeholder="Display name" v-model="username" autofocus required>
                 <label v-bind:class="{active: loginErrMsg}">@{{ loginErrMsg }}</label>
                 <button class="styled" type="submit" @click="checkLogin">Log in</button>
             </form>
