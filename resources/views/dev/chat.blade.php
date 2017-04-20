@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="drawer" v-bind:class="{active: drawerOpen}">
-            <img src="{{ asset('img/sidebar-white.svg') }}" alt="RainyChat" class="logo">
+            <img src="{{ asset('img/sidebar-white.png') }}" alt="RainyChat" class="logo">
             <div class="welcome">
                 Welcome,<br>Nathan
             </div>
