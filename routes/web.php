@@ -11,12 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('chat');
+Route::group(['domain' => '{room}.rainy.dev'], function () {
+    Route::get('/', function ($room) {
+        return view('chat', compact('room'));
+    })->where('room', '.+');;
 });
 
-Route::get('/dev', function () {
-    return view('dev/chat');
+Route::get('/', function () {
+    return view('app');
 });
 
 // Google Webmaster verification

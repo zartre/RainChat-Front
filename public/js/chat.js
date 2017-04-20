@@ -114,12 +114,6 @@ function login(ws, username, roomname) {
 
 var config;
 
-$.getJSON('config.json', function(response) {
-    config = response;
-    app.config = config;
-    console.log(config);
-})
-
 // Vue
 
 var app = new Vue({
@@ -186,3 +180,10 @@ var app = new Vue({
 $('input#login__username').focus();
 
 app.onlineList();
+
+// get configuration
+$.getJSON('config.json', function(response) {
+    config = response;
+    app.config = config;
+    console.log(config);
+})

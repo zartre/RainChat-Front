@@ -33,6 +33,7 @@
             <div style="position: absolute; left: 20px; bottom: 20px; z-index: 10">
             Development Mode<br>
             url: {{ url('/') }}<br>
+            room: {{ $room }}<br>
             host: @{{ config.host }}<br>
             port: @{{ config.port }}
             </div>

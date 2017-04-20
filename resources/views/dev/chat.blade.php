@@ -32,6 +32,7 @@
         @if (substr(url('/'), -3, 3) == 'dev')
             <div style="position: absolute; left: 20px; bottom: 20px; z-index: 10">
             Development Mode<br>
+            <!-- room: {{ $room }}<br> -->
             url: {{ url('/') }}<br>
             host: @{{ config.host }}<br>
             port: @{{ config.port }}
