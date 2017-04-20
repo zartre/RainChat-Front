@@ -31,7 +31,7 @@
             <div class="box">
                 <h1>Enter a display name</h1>
                 <input type="text" placeholder="Display name" v-model="username" autofocus>
-                <label>@{{ loginErrMsg }}</label>
+                <label v-bind:class="{active: loginErrMsg}">@{{ loginErrMsg }}</label>
                 <button class="styled" @click="checkLogin">Log in</button>
             </div>
         </div>
@@ -73,7 +73,7 @@
             </form>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/visible.min.js') }}"></script>
     <script src="{{ asset('js/chat.js?v=1.1') }}"></script>
 </body>

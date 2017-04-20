@@ -180,6 +180,10 @@ header {
 		}
 		label {
 			color: $error;
+			display: none;
+			&.active {
+				display: block;
+			}
 		}
 	}
 }
