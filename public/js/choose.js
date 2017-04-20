@@ -5,7 +5,7 @@ var app = new Vue({
 	},
 	methods: {
 		create: function() {
-			window.open('http://' + this.roomName + '.rainy.chat', '_self');
+			window.open('http://' + this.roomName + '.rainy.chat/dev', '_self');
 		}
 	}
 });
