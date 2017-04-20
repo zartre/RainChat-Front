@@ -3,6 +3,7 @@ $secondary-color: rgb(56,202,255);
 $primary-shadow: 0 8px 30px rgba(2,103,255,0.1);
 $btn-shadow: 0px 4px 10px rgba(2,103,255,0.3);
 $my-bubble: #E6F0FF;
+$error: rgb(255, 93, 115);
 
 @font-face {
 	font-family: 'Stolzl';
@@ -174,6 +175,12 @@ header {
 			font-family: "Stolzl", sans-serif;
 			margin: 0;
 		}
+		button.styled {
+			margin-top: 1.5em;
+		}
+		label {
+			color: $error;
+		}
 	}
 }
 input {
@@ -183,8 +190,9 @@ input {
 	width: 100%;
 	border: none;
 	border-bottom: 2px solid $primary-color;
+	border-radius: 0;
 	font-size: 1em;
-	margin: 1.5em 0;
+	margin: 1.5em 0 0.3em;
 	&:focus {
 		outline: none;
 	}
@@ -233,7 +241,7 @@ button.styled {
 	overflow-x: hidden;
 	overflow-y: scroll;
 }
-.chat-box {
+form.chat-box {
 	display: flex;
 	align-items: center;
 	width: 100%;
@@ -247,6 +255,7 @@ button.styled {
 		font-size: 1em;
 		border: none;
 		border-bottom: 2px solid $primary-color;
+		border-radius: 0;
 		margin: 0;
 		&:focus {
 			outline: none;

@@ -90,10 +90,7 @@ function listen(ws, username, roomname, message) {
         // login verification
         if (json.iserror) {
             // display login error
-            var notification = document.querySelector('.mdl-js-snackbar');
-            notification.MaterialSnackbar.showSnackbar({
-                message: json.errormsg
-            });
+            app.loginErrMsg = json.errormsg;
             throw json.errormsg;
         } else {
             console.log('Logged in!')
@@ -128,10 +125,12 @@ var app = new Vue({
         ws: null,
         login_count: 0,
         loggedIn: false,
+        loginErrMsg: '',
         username: '',
         room: '',
         drawerOpen: false,
         menuOpen: false,
+        inputBox: 'Please log in first',
         night: false,
         nightText: "Night mode",
         online: [],
@@ -145,10 +144,7 @@ var app = new Vue({
         },
         checkLogin: function() {
             if (!this.username) {
-                var notification = document.querySelector('.mdl-js-snackbar');
-                notification.MaterialSnackbar.showSnackbar({
-                    message: 'Please enter a display name'
-                });
+                this.loginErrMsg = 'Please enter a display name';
             } else if (this.username) {
                 this.login_count++;
                 if (this.login_count === 1) {
@@ -159,6 +155,7 @@ var app = new Vue({
                     this.ws.onmessage = function(event) {
                         listen(app.ws, app.username, app.roomname, event.data);
                     }
+                    this.inputBox = 'Type here';
                 } else {
                     try {
                         login(this.ws, this.username, "global");
