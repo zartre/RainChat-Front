@@ -15,8 +15,12 @@ Route::get('/', function () {
     return view('chat');
 });
 
+Route::get('/choose', function () {
+    return view('dev.choose-room');
+});
+
 Route::get('/dev', function () {
-    return view('dev/chat');
+    return view('dev.chat');
 });
 
 // Google Webmaster verification
