@@ -182,6 +182,4 @@ var app = new Vue({
     }
 });
 
-$('input#login__username').focus();
-
 app.onlineList();

@@ -28,12 +28,12 @@
 <body>
     <div id="app" style="height:100%;">
         <div class="modal" v-if="!loggedIn">
-            <div class="box">
+            <form class="box" id="login_form" v-on:submit.prevent>
                 <h1>Enter a display name</h1>
-                <input type="text" placeholder="Display name" v-model="username" autofocus>
+                <input type="text" placeholder="Display name" v-model="username" autofocus required="">
                 <label v-bind:class="{active: loginErrMsg}">@{{ loginErrMsg }}</label>
-                <button class="styled" @click="checkLogin">Log in</button>
-            </div>
+                <button class="styled" type="submit" @click="checkLogin">Log in</button>
+            </form>
         </div>
         <div class="drawer" v-bind:class="{active: drawerOpen}">
             <img src="{{ asset('img/sidebar-white.png') }}" alt="RainyChat" class="logo">
