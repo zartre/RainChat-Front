@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['domain' => '{room}.rainy.dev'], function () {
+Route::group(['domain' => '{room}.rainy.{tld}'], function () {
     Route::get('/dev', function ($room) {
         return view('dev.chat', compact('room'));
     })->where('room', '.+');;
