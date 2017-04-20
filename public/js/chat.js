@@ -3,7 +3,7 @@ var notiSound = new Audio('noti.mp3');
 
 // Auto-scroll
 function scrollToBottom() {
-    $("#chatwrap").scrollTop($("#chatlog")[0].scrollHeight);
+    $("#chatlog").scrollTop($("#chatlog")[0].scrollHeight);
 }
 
 // Websocket connection
@@ -17,11 +17,9 @@ function connect(host, port) {
 function addChatLog(id, username, message) {
     // @DOBA: do something if recieve a [message]
     message = message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    if ($('.bubble:last-of-type').visible()) {
-        scrollToBottom();
-    }
     if (username === null) {
-        $('#chatlog').append('<div class="bubble me">' + message + '</div>');
+        $('#chatlog').append('<div class="b bubble me">' + message + '</div>');
+        scrollToBottom();
     } else {
         var innerMessage = '<div class="bubble other">' + message + '</div>';
         if (id === last_id) {
@@ -30,8 +28,11 @@ function addChatLog(id, username, message) {
             var innerUser = '<div class="other-name">' + username + '</div>';
         }
         $('#chatlog').append(
-            '<div class="bub-other-group">' + innerUser + innerMessage + '</div>'
+            '<div class="b bub-other-group">' + innerUser + innerMessage + '</div>'
         );
+        if ($('.b:last-child').visible()) {
+            scrollToBottom();
+        }
         if (!document.hasFocus()) {
             notiSound.play();
         }
@@ -72,6 +73,7 @@ function listen(ws, username, roomname, message) {
         last_id = addChatLog(json.id, json.username, json.message);
     } else if (json.type === 'online') {
         // online users status
+        console.log(json);
         var notification = document.querySelector('.mdl-js-snackbar');
         if ('added' in json && json.added != username) {
             // do something if user added
