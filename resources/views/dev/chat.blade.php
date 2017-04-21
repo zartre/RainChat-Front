@@ -60,7 +60,7 @@
             <header>
                 <img src="{{ asset('img/i-menu.svg') }}" alt="menu" class="icon no-drag" id="menu" @click="drawerOpen=true">
                 <div class="room-name no-drag">
-                    Anonymous Group
+                    {{ $room }}
                 </div>
                 <img src="{{ asset('img/i-more.svg') }}" alt="menu" class="icon no-drag" id="more" @click="menuOpen=!menuOpen">
                 <div class="menu" v-bind:class="{active: menuOpen}">

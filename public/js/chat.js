@@ -47,6 +47,9 @@ function sendMessage(ws) {
     if (!message) {
         return;
     }
+    if (message === '/exit') {
+        location.reload();
+    }
     $('#chat').val('');
     ws.send(message);
     message = message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
