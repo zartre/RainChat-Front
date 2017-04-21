@@ -20,7 +20,7 @@ var app = new Vue({
 			}
 		},
 		validate: function() {
-			if (this.roomName.includes('www')) {
+			if (this.roomName.substring(-3, 3) == 'www') {
 				return false;
 			} else {
 				return true;
