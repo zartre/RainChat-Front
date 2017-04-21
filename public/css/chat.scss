@@ -19,9 +19,7 @@ html, body {
 	height: 100%;
 	font-family: "-apple-system", "Helvetica Neue", "Segoe UI", "Ubuntu", sans-serif;
 	text-rendering: optimizeLegibility;
-}
-h1 {
-	font-family: "Stolzl", sans-serif;
+	overflow: hidden;
 }
 
 .no-drag {
@@ -109,6 +107,7 @@ header {
 	box-sizing: border-box;
 	overflow-x: hidden;
 	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
 	transition: transform 0.3s;
 	img.logo {
 		width: 100%;
@@ -168,6 +167,7 @@ header {
 		padding: 1.8em;
 		margin: auto;
 		box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+		animation: fadeIn 0.5s;
 		h1 {
 			color: $primary-color;
 			text-align: center;
@@ -184,6 +184,12 @@ header {
 			&.active {
 				display: block;
 			}
+		}
+		img {
+			display: block;
+			margin: 0 auto 0.5em;
+			width: auto;
+			height: 28px;
 		}
 	}
 }
@@ -244,6 +250,7 @@ button.styled {
 	box-sizing: border-box;
 	overflow-x: hidden;
 	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
 }
 form.chat-box {
 	display: flex;
@@ -385,5 +392,13 @@ form.chat-box {
 			height: 56px;
 			padding: 15px;
 		}
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	} to {
+		opacity: 1;
 	}
 }
