@@ -1,1 +1,1 @@
-var app=new Vue({el:"#app",data:{roomName:""}});
+var app=new Vue({el:"#app",data:{roomName:"",err:""},methods:{create:function(){var e=this.roomName;"."==e.charAt(e.length-1)&&(e=e.substr(0,e.length-1),this.roomName=e),this.roomName?window.open("http://"+this.roomName+".rainy.dev/dev","_self"):this.err="Please enter a room name"}}});
