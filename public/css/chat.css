@@ -7,10 +7,8 @@ html, body {
   margin: 0;
   height: 100%;
   font-family: "-apple-system", "Helvetica Neue", "Segoe UI", "Ubuntu", sans-serif;
-  text-rendering: optimizeLegibility; }
-
-h1 {
-  font-family: "Stolzl", sans-serif; }
+  text-rendering: optimizeLegibility;
+  overflow: hidden; }
 
 .no-drag {
   user-select: none;

@@ -19,9 +19,7 @@ html, body {
 	height: 100%;
 	font-family: "-apple-system", "Helvetica Neue", "Segoe UI", "Ubuntu", sans-serif;
 	text-rendering: optimizeLegibility;
-}
-h1 {
-	font-family: "Stolzl", sans-serif;
+	overflow: hidden;
 }
 
 .no-drag {
