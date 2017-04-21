@@ -1,20 +1,29 @@
 var app = new Vue({
 	el: '#app',
 	data: {
-		roomName: '',
-		err: ''
+		roomName: ''
 	},
 	methods: {
 		create: function() {
 			var rn = this.roomName;
-			if (rn.charAt(rn.length - 1) == '.') {
-				rn = rn.substr(0, rn.length - 1);
-				this.roomName = rn;
+			var fixed = 0;
+			while (!fixed) {
+				if (rn.charAt(rn.length - 1) === '.') {
+					rn = rn.substr(0, rn.length - 1);
+					this.roomName = rn;
+				} else {
+					fixed = 1;
+				}
 			}
-			if (this.roomName) {
+			if (this.validate()) {
 				window.open('http://' + this.roomName + '.rainy.dev/dev', '_self');
+			}
+		},
+		validate: function() {
+			if (this.roomName.includes('www')) {
+				return false;
 			} else {
-				this.err = 'Please enter a room name';
+				return true;
 			}
 		}
 	}
