@@ -37,6 +37,10 @@ function addChatLog(id, username, message) {
             notiSound.play();
         }
     }
+    if (message === '/rain') {
+        createRain();
+        console.log('Raining');
+    }
     console.log('Message received: ' + message);
     return id;
 }

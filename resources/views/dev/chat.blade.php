@@ -17,6 +17,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <title>Rainy.Chat</title>
     <link rel="stylesheet" href="{{ asset('css/chat.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/rain-min.css') }}">
     {{-- <script src="https://unpkg.com/vue"></script> --}}
     <script src="{{ asset('js/vue.min.js') }}"></script>
 </head>
@@ -42,6 +43,7 @@
                 <button class="styled no-drag" v-if="!username" onclick="window.open('http://rainy.dev/dev', '_self')">Change room</button>
             </form>
         </div>
+        <section class="rain"></section>
         <div class="drawer" v-bind:class="{active: drawerOpen}">
             <img src="{{ asset('img/sidebar-white.png') }}" alt="RainyChat" class="logo no-drag">
             <div class="welcome no-drag" v-if="loggedIn">
@@ -82,7 +84,8 @@
     </div>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/visible.min.js') }}"></script>
-    <script src="{{ asset('js/chat.js?v=1.1') }}"></script>
+    <script src="{{ asset('js/chat-min.js?v=1.1') }}"></script>
+    <script src="{{ asset('js/rain-min.js?v=1.1') }}"></script>
 </body>
 
 </html>

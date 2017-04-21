@@ -1,0 +1,1 @@
+function randRange(o,r){return Math.floor(Math.random()*(r-o+1))+o}function createRain(){for(i=1;i<nbDrop;i++){var o=randRange(0,1600),r=randRange(-1e3,1400);$(".rain").append('<div class="drop" id="drop'+i+'"></div>'),$("#drop"+i).css("left",o),$("#drop"+i).css("top",r),console.log(i)}setTimeout(function(){for(i=1;i<nbDrop;i++)$("#drop"+i).remove()},4e3)}var nbDrop=100;

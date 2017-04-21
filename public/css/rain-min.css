@@ -1,0 +1,13 @@
+.drop {
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#0d343a), to(rgba(255, 255, 255, 0.6)));
+  background: -moz-linear-gradient(top, #0d343a 0%, rgba(255, 255, 255, 0.6) 100%);
+  width: 1px;
+  height: 89px;
+  position: absolute;
+  bottom: 200px;
+  -webkit-animation: fall .63s linear infinite;
+  -moz-animation: fall .63s linear infinite; }
+
+@-webkit-keyframes fall {
+  to {
+    margin-top: 900px; } }
