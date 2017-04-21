@@ -74,18 +74,18 @@ function listen(ws, username, roomname, message) {
     } else if (json.type === 'online') {
         // online users status
         console.log(json);
-        var notification = document.querySelector('.mdl-js-snackbar');
+        // var notification = document.querySelector('.mdl-js-snackbar');
         if ('added' in json && json.added != username) {
             // do something if user added
-            notification.MaterialSnackbar.showSnackbar({
-                message: json.added + ' joined the room'
-            });
+            // notification.MaterialSnackbar.showSnackbar({
+            //     message: json.added + ' joined the room'
+            // });
         }
         if ('removed' in json) {
             // do something if user removed
-            notification.MaterialSnackbar.showSnackbar({
-                message: json.removed + ' left the room'
-            });
+            // notification.MaterialSnackbar.showSnackbar({
+            //     message: json.removed + ' left the room'
+            // });
         }
         app.online = json.users;
     } else if (json.type === 'login') {
@@ -108,6 +108,7 @@ function login(ws, username, roomname) {
     var data = {
         username: username
     }
+    console.log(JSON.stringify(data));
     ws.send(JSON.stringify(data));
 }
 
