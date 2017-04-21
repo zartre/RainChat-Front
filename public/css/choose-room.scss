@@ -36,6 +36,7 @@ html, body {
 		padding: 1.8em;
 		margin: auto;
 		box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+		animation: fadeIn 0.5s;
 		h1 {
 			color: $primary-color;
 			text-align: center;
@@ -97,5 +98,13 @@ button.styled {
 		outline: none;
 		box-shadow: none;
 		transform: translateY(2px);
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	} to {
+		opacity: 1;
 	}
 }

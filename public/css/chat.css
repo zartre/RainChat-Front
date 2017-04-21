@@ -137,7 +137,8 @@ header {
     display: inline-block;
     padding: 1.8em;
     margin: auto;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); }
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 0.5s; }
     .modal form.box h1 {
       color: #0267ff;
       text-align: center;
@@ -324,3 +325,9 @@ form.chat-box {
       width: 56px;
       height: 56px;
       padding: 15px; } }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }

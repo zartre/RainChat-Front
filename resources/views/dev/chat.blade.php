@@ -38,7 +38,7 @@
                 <h1>Enter a display name</h1>
                 <input type="text" placeholder="Display name" v-model="username" autofocus required>
                 <label v-bind:class="{active: loginErrMsg}">@{{ loginErrMsg }}</label>
-                <button class="styled" type="submit" @click="checkLogin">Log in</button>
+                <button class="styled" type="submit" v-if="username" @click="checkLogin">Log in</button>
             </form>
         </div>
         <div class="drawer" v-bind:class="{active: drawerOpen}">
