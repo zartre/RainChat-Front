@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
     <meta property="og:image" content="{{ asset('img/ogimage.jpg') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" href="{{ asset('favicon/favicon-32x32.png') }}" sizes="32x32">
@@ -34,20 +34,20 @@
         @endif
         <div class="modal" v-if="!loggedIn">
             <form class="box" id="login_form" v-on:submit.prevent>
-                <img src="{{ asset('img/i-user.svg') }}" alt="Room">
-                <h1>Enter a display name</h1>
+                <img src="{{ asset('img/i-user.svg') }}" alt="Room" class="no-drag">
+                <h1 class="no-drag">Enter a display name</h1>
                 <input type="text" placeholder="Display name" v-model="username" autofocus required>
-                <label v-bind:class="{active: loginErrMsg}">@{{ loginErrMsg }}</label>
-                <button class="styled" type="submit" v-if="username" @click="checkLogin">Log in</button>
+                <label v-bind:class="{active: loginErrMsg}" class="no-drag">@{{ loginErrMsg }}</label>
+                <button class="styled no-drag" type="submit" v-if="username" @click="checkLogin">Log in</button>
             </form>
         </div>
         <div class="drawer" v-bind:class="{active: drawerOpen}">
-            <img src="{{ asset('img/sidebar-white.png') }}" alt="RainyChat" class="logo">
-            <div class="welcome" v-if="loggedIn">
+            <img src="{{ asset('img/sidebar-white.png') }}" alt="RainyChat" class="logo no-drag">
+            <div class="welcome no-drag" v-if="loggedIn">
                 Welcome,<br>
                 @{{ username }}
             </div>
-            <div class="online">
+            <div class="online no-drag">
                 <div class="heading">
                     Online users
                 </div>
@@ -57,15 +57,15 @@
         <div class="drawer-bg" v-bind:class="{active: drawerOpen}" @click="drawerOpen=false"></div>
         <div class="content">
             <header>
-                <img src="{{ asset('img/i-menu.svg') }}" alt="menu" class="icon" id="menu" @click="drawerOpen=true">
-                <div class="room-name">
+                <img src="{{ asset('img/i-menu.svg') }}" alt="menu" class="icon no-drag" id="menu" @click="drawerOpen=true">
+                <div class="room-name no-drag">
                     Anonymous Group
                 </div>
-                <img src="{{ asset('img/i-more.svg') }}" alt="menu" class="icon" id="more" @click="menuOpen=!menuOpen">
+                <img src="{{ asset('img/i-more.svg') }}" alt="menu" class="icon no-drag" id="more" @click="menuOpen=!menuOpen">
                 <div class="menu" v-bind:class="{active: menuOpen}">
                     <a href="#">Night mode</a>
-                    <a href="#">Join more</a>
-                    <a href="#">Logout</a>
+                    <a href="{{ url('http://rainy.dev/dev') }}" target="_blank">Join more</a>
+                    <a href="" onclick="window.reload()">Logout</a>
                 </div>
             </header>
             <div class="chat-wrap" id="chatlog">
