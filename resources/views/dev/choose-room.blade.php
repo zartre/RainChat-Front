@@ -15,7 +15,7 @@
     <meta name="theme-color" content="#00b8ff">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="stylesheet" href="{{ asset('css/chat.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/choose-room.css') }}">
     <title>Rainy.Chat</title>
     <script src="{{ asset('js/vue.min.js') }}"></script>
 </head>
@@ -24,6 +24,7 @@
     <div id="app" style="height:100%;">
         <div class="modal">
             <form class="box" id="login_form" v-on:submit.prevent>
+                <img src="{{ asset('img/i-home.svg') }}" alt="Room">
                 <h1>Enter a room name</h1>
                 <input type="text" placeholder="Room name" autofocus required v-model="roomName">
                 <label v-bind:class="{active: err}">@{{ err }}</label>

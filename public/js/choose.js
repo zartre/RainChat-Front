@@ -7,7 +7,7 @@ var app = new Vue({
 	methods: {
 		create: function() {
 			if (this.roomName) {
-				window.open('http://' + this.roomName + '.rainy.chat/dev', '_self');
+				window.open('http://' + this.roomName + '.rainy.dev/dev', '_self');
 			} else {
 				this.err = 'Please enter a room name';
 			}
