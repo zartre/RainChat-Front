@@ -23,6 +23,11 @@ Route::get('/dev', function () {
     return view('dev.choose-room');
 });
 
+Route::get('/', function () {
+    return view('chat');
+});
+
+
 // Google Webmaster verification
 Route::get('/googled63a3a7848bbc072.html', function () {
     return view('config/googled63a3a7848bbc072');
