@@ -109,7 +109,10 @@ header {
 .welcome {
   font-family: "Stolzl", sans-serif;
   font-size: 16px;
-  margin: 36px 0 0; }
+  margin: 36px 0 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap; }
 
 .online {
   margin-top: 36px; }
@@ -117,7 +120,10 @@ header {
     font-family: "Stolzl", sans-serif;
     margin-bottom: 10px; }
   .online .user {
-    margin-bottom: 6px; }
+    margin-bottom: 6px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap; }
 
 /* MODAL */
 .modal {
