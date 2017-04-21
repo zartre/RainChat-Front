@@ -27,7 +27,7 @@
                 <img src="{{ asset('img/i-home.svg') }}" alt="Room">
                 <h1>Enter a room name</h1>
                 <input type="text" placeholder="Room name" autofocus required v-model="roomName">
-                {{-- <label v-bind:class="{active: loginErrMsg}">@{{ loginErrMsg }}</label> --}}
+                <label v-bind:class="{active: err}">@{{ err }}</label>
                 <button class="styled" type="submit" @click="create()">Next</button>
             </form>
         </div>
