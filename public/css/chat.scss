@@ -109,6 +109,7 @@ header {
 	box-sizing: border-box;
 	overflow-x: hidden;
 	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
 	transition: transform 0.3s;
 	img.logo {
 		width: 100%;
@@ -250,6 +251,7 @@ button.styled {
 	box-sizing: border-box;
 	overflow-x: hidden;
 	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
 }
 form.chat-box {
 	display: flex;
