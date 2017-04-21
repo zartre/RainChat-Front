@@ -224,8 +224,7 @@ form.chat-box {
     font-size: 1em;
     border: none;
     border-bottom: 2px solid #0267ff;
-    border-radius: 0;
-    margin: 0; }
+    border-radius: 0; }
     form.chat-box input:focus {
       outline: none; }
   form.chat-box .submit-btn {
@@ -302,7 +301,7 @@ form.chat-box {
   .drawer {
     transform: translateX(-240px);
     box-shadow: none; }
-  .chat-box {
+  form.chat-box {
     max-width: 100%;
     box-shadow: 0 -8px 30px rgba(2, 103, 255, 0.1); } }
 
@@ -317,9 +316,9 @@ form.chat-box {
       font-size: 19px; }
     header .menu {
       top: 66px; }
-  .chat-box {
+  form.chat-box {
     height: 56px; }
-    .chat-box .submit-btn {
+    form.chat-box .submit-btn {
       width: 56px;
       height: 56px;
       padding: 15px; } }
