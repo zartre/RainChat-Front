@@ -98,6 +98,8 @@ function listen(ws, username, roomname, message) {
             console.log('Logged in!')
             ready(ws, username, roomname);
         }
+    } else if (json.type === 'rooms') {
+        console.log(json)
     } else {
         console.log('invalid server response')
     }
