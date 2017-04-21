@@ -34,6 +34,7 @@
         @endif
         <div class="modal" v-if="!loggedIn">
             <form class="box" id="login_form" v-on:submit.prevent>
+                <img src="{{ asset('img/i-user.svg') }}" alt="Room">
                 <h1>Enter a display name</h1>
                 <input type="text" placeholder="Display name" v-model="username" autofocus required>
                 <label v-bind:class="{active: loginErrMsg}">@{{ loginErrMsg }}</label>
