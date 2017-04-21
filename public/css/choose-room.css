@@ -1,1 +1,81 @@
-@font-face{font-family:'Stolzl';src:url("../fonts/33859F_0_0.eot");src:url("../fonts/33859F_0_0.eot?#iefix") format("embedded-opentype"),url("../fonts/33859F_0_0.woff2") format("woff2"),url("../fonts/33859F_0_0.woff") format("woff"),url("../fonts/33859F_0_0.ttf") format("truetype")}html,body{margin:0;height:100%;font-family:"-apple-system", "Helvetica Neue", "Segoe UI", "Ubuntu", sans-serif;text-rendering:optimizeLegibility}.modal{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;box-sizing:border-box;background:-webkit-linear-gradient(315deg, #0267ff, #38caff);background:linear-gradient(135deg, #0267ff, #38caff);width:100%;height:100%;position:fixed;z-index:4}.modal form.box{background:#fff;border-radius:5px;display:inline-block;padding:1.8em;margin:auto;box-shadow:0 8px 20px rgba(0,0,0,0.15)}.modal form.box h1{color:#0267ff;text-align:center;font-size:1.2em;font-family:"Stolzl", sans-serif;margin:0}.modal form.box button.styled{margin-top:1.5em}.modal form.box label{color:#ff5d73;display:none}.modal form.box label.active{display:block}input{display:block;box-sizing:border-box;padding-bottom:4px;width:100%;border:none;border-bottom:2px solid #0267ff;border-radius:0;font-size:1em;margin:1.5em 0 0.3em}input:focus{outline:none}button.styled{display:block;width:100%;border:none;border-radius:5px;cursor:pointer;font-family:"Stolzl", sans-serif;font-size:1em;color:#fff;box-shadow:0px 4px 10px rgba(2,103,255,0.3);padding:0.6em;background:-webkit-linear-gradient(315deg, #0267ff, #38caff);background:linear-gradient(135deg, #0267ff, #38caff);-webkit-transition:all 0.2s;transition:all 0.2s}button.styled:hover,button.styled:focus{outline:none;-webkit-transform:translateY(-2px);transform:translateY(-2px);box-shadow:0px 6px 20px rgba(2,103,255,0.3)}button.styled:active{outline:none;box-shadow:none;-webkit-transform:translateY(2px);transform:translateY(2px)}
+@font-face {
+  font-family: 'Stolzl';
+  src: url("../fonts/33859F_0_0.eot");
+  src: url("../fonts/33859F_0_0.eot?#iefix") format("embedded-opentype"), url("../fonts/33859F_0_0.woff2") format("woff2"), url("../fonts/33859F_0_0.woff") format("woff"), url("../fonts/33859F_0_0.ttf") format("truetype"); }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: "-apple-system", "Helvetica Neue", "Segoe UI", "Ubuntu", sans-serif;
+  text-rendering: optimizeLegibility; }
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #0267ff, #38caff);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 4; }
+  .modal form.box {
+    background: #fff;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 1.8em;
+    margin: auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); }
+    .modal form.box h1 {
+      color: #0267ff;
+      text-align: center;
+      font-size: 1.2em;
+      font-family: "Stolzl", sans-serif;
+      margin: 0; }
+    .modal form.box button.styled {
+      margin-top: 1.5em; }
+    .modal form.box label {
+      color: #ff5d73;
+      display: none; }
+      .modal form.box label.active {
+        display: block; }
+    .modal form.box img {
+      display: block;
+      margin: 0 auto 0.5em;
+      width: 28px;
+      height: auto; }
+
+input {
+  display: block;
+  box-sizing: border-box;
+  padding-bottom: 4px;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #0267ff;
+  border-radius: 0;
+  font-size: 1em;
+  margin: 1.5em 0 0.3em; }
+  input:focus {
+    outline: none; }
+
+button.styled {
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Stolzl", sans-serif;
+  font-size: 1em;
+  color: #fff;
+  box-shadow: 0px 4px 10px rgba(2, 103, 255, 0.3);
+  padding: 0.6em;
+  background: linear-gradient(135deg, #0267ff, #38caff);
+  transition: all 0.2s; }
+  button.styled:hover, button.styled:focus {
+    outline: none;
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 20px rgba(2, 103, 255, 0.3); }
+  button.styled:active {
+    outline: none;
+    box-shadow: none;
+    transform: translateY(2px); }

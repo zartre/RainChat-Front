@@ -177,7 +177,7 @@ var app = new Vue({
     }
 });
 
-app.onlineList();
+// app.onlineList();
 
 // get configuration
 $.getJSON('config.json', function(response) {
