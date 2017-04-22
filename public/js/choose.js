@@ -1,7 +1,8 @@
 var app = new Vue({
 	el: '#app',
 	data: {
-		roomName: ''
+		roomName: '',
+		host: window.location.hostname
 	},
 	methods: {
 		create: function() {
@@ -16,7 +17,7 @@ var app = new Vue({
 				}
 			}
 			if (this.validate()) {
-				window.open('http://' + this.roomName + '.rainy.dev/dev', '_self');
+				window.open('http://' + this.roomName + '.' + this.host + '/dev', '_self');
 			}
 		},
 		validate: function() {
@@ -28,3 +29,4 @@ var app = new Vue({
 		}
 	}
 });
+
