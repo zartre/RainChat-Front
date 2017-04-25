@@ -161,14 +161,12 @@ var app = new Vue({
                     this.ws.onmessage = function(event) {
                         listen(app.ws, app.username, app.roomname, event.data);
                     }
+                    this.ws.onclose = function() {
+                        window.location.reload(false);
+                    }
                     this.inputBox = 'Type here';
                 } else {
-                    try {
-                        login(this.ws, this.username, "global");
-                    } catch (err) {
-                        // do something if error on logging in
-                        console.log(err);
-                    }
+                    login(this.ws, this.username, "global");
                 }
             }
         },
