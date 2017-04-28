@@ -16,11 +16,52 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <title>Rainy.Chat</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #FFF;
+            font-family: "-apple-system", "Segoe UI", "Ubuntu", sans-serif;
+            background: linear-gradient(135deg, rgb(2,103,255), rgb(56,202,255));
+            overflow: hidden;
+        }
+        img {
+            display: block;
+            width: 100%;
+            max-width: 270px;
+            margin-bottom: 3em;
+        }
+        h2 {
+            margin: 0 0 0.6rem;
+        }
+        h3 {
+            margin: 0;
+        }
+        @media (max-width: 320px) {
+            img {
+                max-width: 220px;
+                margin-bottom: 2em;
+            }
+            h2 {
+                font-size: 1.2em;
+            }
+            h3 {
+                font-size: 1em;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Under a HUGE maintainance</h1>
-    <h3>So huge that we have no time to decorate this page.</h3>
+    <img src="{{ asset('img/sidebar-white.png') }}" alt="Rainy.Chat">
+    <h2>May the 4th be with you</h2>
+    <h3>Let's meet at IT Auditorium, 1 PM</h3>
 </body>
 
 </html>
