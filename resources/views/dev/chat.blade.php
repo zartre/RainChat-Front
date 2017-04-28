@@ -68,7 +68,7 @@
                 <div class="menu" v-bind:class="{active: menuOpen}">
                     <a href="#">Night mode</a>
                     <a href="{{ url('http://rainy.dev/dev') }}" target="_blank">Join more</a>
-                    <a href="" onclick="window.reload()">Logout</a>
+                    <a href="" onclick="window.reload(false)">Logout</a>
                 </div>
             </header>
             <div class="chat-wrap" id="chatlog">
@@ -84,7 +84,7 @@
     </div>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/visible.min.js') }}"></script>
-    <script src="{{ asset('js/chat-min.js?v=1.1') }}"></script>
+    <script src="{{ asset('js/chat.js?v=1.1') }}"></script>
     <script src="{{ asset('js/rain-min.js?v=1.1') }}"></script>
 </body>
 

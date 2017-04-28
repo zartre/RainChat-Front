@@ -1,5 +1,5 @@
-var last_id = -1;
-var notiSound = new Audio('noti.mp3');
+
+var notiSound;
 
 // Auto-scroll
 function scrollToBottom() {
@@ -22,7 +22,7 @@ function addChatLog(id, username, message) {
         scrollToBottom();
     } else {
         var innerMessage = '<div class="bubble other">' + message + '</div>';
-        if (id === last_id) {
+        if (id === app.last_id) {
             var innerUser = '';
         } else {
             var innerUser = '<div class="other-name">' + username + '</div>';
@@ -35,6 +35,7 @@ function addChatLog(id, username, message) {
         }
         if (!document.hasFocus()) {
             notiSound.play();
+            app.setNotification(app.notification.count + 1);
         }
     }
     if (message === '/rain') {
@@ -64,7 +65,6 @@ function ready(ws, username, roomname) {
     $('#chatform').submit(function(e) {
         e.preventDefault();
         sendMessage(ws);
-        last_id = -1;
     });
     app.loggedIn = true;
     app.typeHere = 'Type and press enter to send';
@@ -77,7 +77,7 @@ function listen(ws, username, roomname, message) {
     var json = JSON.parse(message);
     if (json.type === 'message') {
         // plain message
-        last_id = addChatLog(json.id, json.username, json.message);
+        app.last_id = addChatLog(json.id, json.username, json.message);
     } else if (json.type === 'online') {
         // online users status
         console.log(json);
@@ -121,13 +121,12 @@ function login(ws, username, roomname) {
     ws.send(JSON.stringify(data));
 }
 
-var config;
-
 // Vue
 
 var app = new Vue({
     el: '#app',
     data: {
+        title: 'Rainy.Chat',
         ws: null,
         login_count: 0,
         loggedIn: false,
@@ -140,7 +139,11 @@ var app = new Vue({
         night: false,
         nightText: "Night mode",
         online: [],
-        config: null
+        config: {},
+        notification: {
+            count: 0
+        },
+        last_id: -1
     },
     methods: {
         onlineList: function() {
@@ -154,7 +157,7 @@ var app = new Vue({
             } else if (this.username) {
                 this.login_count++;
                 if (this.login_count === 1) {
-                    this.ws = connect(config.host, config.port); // local
+                    this.ws = connect(this.config.host, this.config.port); // local
                     this.ws.onopen = function() {
                         login(app.ws, app.username, "global");
                     };
@@ -180,15 +183,31 @@ var app = new Vue({
                 this.nightText = 'Normal';
                 $('meta[name="theme-color"]').attr('content', '#000');
             }
+        },
+        setNotification: function(value) {
+            console.log(value);
+            this.notification.count = value;
+            var noti;
+            if (value) {
+                noti = '(' + this.notification.count + ') '
+            } else {
+                noti = ''
+            }
+            document.title = noti + this.title;
         }
     }
 });
 
-// app.onlineList();
+$(document).ready(function() {
+    notiSound = new Audio('noti.mp3');
 
-// get configuration
-$.getJSON('config.json', function(response) {
-    config = response;
-    app.config = config;
-    console.log(config);
-})
+    // get configuration
+    $.getJSON('config.json', function(response) {
+        app.config = response;
+        console.log(app.config);
+    })
+
+    window.onfocus = function() {
+        app.setNotification(0);
+    };
+});
