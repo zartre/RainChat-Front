@@ -168,6 +168,9 @@ var app = new Vue({
                         window.location.reload(false);
                     }
                     this.inputBox = 'Type here';
+                    setTimeout(function() {
+                        $('#chat').focus();
+                    }, 100);
                 } else {
                     login(this.ws, this.username, "global");
                 }
