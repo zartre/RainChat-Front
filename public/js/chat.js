@@ -211,3 +211,9 @@ $(document).ready(function() {
         app.setNotification(0);
     };
 });
+
+$('html').click(function(e) {
+    if(e.target.id != "more") {
+        app.menuOpen = false;
+   }
+}); 
