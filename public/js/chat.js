@@ -40,6 +40,12 @@ function addChatLog(json, message) {
                 // rain triggered
                 createRain();
                 console.log('Raining');
+            } else {
+                console.log('Command not found');
+                $('<div/>', {
+                    class: 'notification-log',
+                    text: 'Command not found'
+                }).appendTo('#chatlog');
             }
         } else {
             // echo message to self
@@ -128,15 +134,17 @@ function listen(ws, username, roomname, message) {
         // var notification = document.querySelector('.mdl-js-snackbar');
         if ('added' in json && json.added != username) {
             // do something if user added
-            // notification.MaterialSnackbar.showSnackbar({
-            //     message: json.added + ' joined the room'
-            // });
+            $('<div/>', {
+                class: 'notification-log',
+                text: json.added + ' joined the room'
+            }).appendTo('#chatlog');
         }
         if ('removed' in json) {
             // do something if user removed
-            // notification.MaterialSnackbar.showSnackbar({
-            //     message: json.removed + ' left the room'
-            // });
+            $('<div/>', {
+                class: 'notification-log',
+                text: json.removed + ' left the room'
+            }).appendTo('#chatlog');
         }
         app.online = json.users;
     } else if (json.type === 'login') {
