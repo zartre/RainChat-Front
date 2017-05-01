@@ -339,6 +339,12 @@ form.chat-box {
 .bub-other-group + .bub-other-group {
 	margin-top: -0.7em;
 }
+.notification-log {
+	clear: both;
+	text-align: center;
+	margin-bottom: 1em;
+	color: $primary-color;
+}
 
 @media screen and (min-width: 1024px) {
 	header img#menu.icon {
