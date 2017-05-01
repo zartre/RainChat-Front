@@ -1,3 +1,11 @@
+"use strict";
+
+const FLAG_PEER = 1;
+const FLAG_PUBLIC = 2;
+const FLAG_MESSAGE = 4;
+const FLAG_FROMPEER = 8;
+const FLAG_FROMABOVE = 16;
+const FLAG_RAIN = 32;
 
 var notiSound;
 
@@ -14,41 +22,69 @@ function connect(host, port) {
     return ws;
 }
 
-function addChatLog(id, username, message) {
+function addChatLog(json, message) {
     // @DOBA: do something if recieve a [message]
     message = message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    if (username === null) {
-        $('#chatlog').append('<div class="b bubble me">' + message + '</div>');
+    if (!json.flag) {
+        if (message.charAt(0) === '/') {
+            var command = message.split(' ')
+            message = message.substr(command[0].length);
+            console.log(command);
+            // is command
+            if (command[0] === '/public') {
+                // message published
+                $('#chatlog').append('<div class="b bubble me">Message public: ' + message + '</div>');
+            }
+            else if (command[0] === '/rain') {
+                // rain triggered
+                createRain();
+                console.log('Raining');
+            }
+        } else {
+            // echo message to self
+            $('#chatlog').append('<div class="b bubble me">' + message + '</div>');
+        }
         scrollToBottom();
     } else {
         var innerMessage = '<div class="bubble other">' + message + '</div>';
-        if (id === app.last_id) {
-            var innerUser = '';
+        var innerUser;
+        if (json.id === app.last_id) {
+            innerUser = '';
         } else {
-            var innerUser = '<div class="other-name">' + username + '</div>';
-        }
-        $('#chatlog').append(
-            '<div class="b bub-other-group">' + innerUser + innerMessage + '</div>'
-        );
-        if ($('.b:last-child').visible()) {
-            scrollToBottom();
-        }
-        if (!document.hasFocus()) {
-            notiSound.play();
-            app.setNotification(app.notification.count + 1);
+            if (json.flag & FLAG_MESSAGE) {
+                // message
+                if (json.flag & FLAG_FROMPEER) {
+                    console.log("is peer");
+                    innerUser = '<div class="other-name">' + json.username + '</div>';
+                } else if (json.flag & FLAG_FROMABOVE) {
+                    console.log("is above");
+                    innerUser = '<div class="other-name">' + json.username +  ' (public from ' + json.roomname + ')</div>';
+                }
+                $('#chatlog').append(
+                    '<div class="b bub-other-group">' + innerUser + innerMessage + '</div>'
+                );
+                if ($('.b:last-child').visible()) {
+                    scrollToBottom();
+                }
+                if (!document.hasFocus()) {
+                    notiSound.play();
+                    app.setNotification(app.notification.count + 1);
+                }
+            } else if (json.flag & FLAG_RAIN) {
+                // rain triggered
+                createRain();
+                console.log('Raining');
+                return app.last_id;
+            }
+            console.log('flag: ' + json.flag);
         }
     }
-    if (message === '/rain') {
-        createRain();
-        console.log('Raining');
-    }
-    console.log('Message received: ' + message);
-    return id;
+    return json.id;
 }
 
 function sendMessage(ws) {
     // @DOBA: do something when form is submitted
-    message = $('#chat').val();
+    var message = $('#chat').val();
     if (!message) {
         return;
     }
@@ -58,7 +94,12 @@ function sendMessage(ws) {
     $('#chat').val('');
     ws.send(message);
     message = message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    addChatLog(-1, null, message);
+    var json = {
+        id: -1,
+        username: app.username,
+        flag: 0
+    }
+    addChatLog(json, message);
 }
 
 function ready(ws, username, roomname) {
@@ -77,7 +118,8 @@ function listen(ws, username, roomname, message) {
     var json = JSON.parse(message);
     if (json.type === 'message') {
         // plain message
-        app.last_id = addChatLog(json.id, json.username, json.message);
+        json.roomname = json.roomname.split('.').slice(0, -2);
+        app.last_id = addChatLog(json, json.message);
     } else if (json.type === 'online') {
         // online users status
         console.log(json);
@@ -188,7 +230,6 @@ var app = new Vue({
             }
         },
         setNotification: function(value) {
-            console.log(value);
             this.notification.count = value;
             var noti;
             if (value) {
@@ -219,4 +260,4 @@ $('html').click(function(e) {
     if(e.target.id != "more") {
         app.menuOpen = false;
    }
-}); 
+});
