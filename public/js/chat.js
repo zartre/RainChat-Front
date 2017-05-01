@@ -26,6 +26,7 @@ function addChatLog(json, message) {
     // @DOBA: do something if recieve a [message]
     message = message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
     if (!json.flag) {
+        // from self
         if (message.charAt(0) === '/') {
             var command = message.split(' ')
             message = message.substr(command[0].length);
@@ -46,13 +47,14 @@ function addChatLog(json, message) {
         }
         scrollToBottom();
     } else {
+        // from other
         var innerMessage = '<div class="bubble other">' + message + '</div>';
         var innerUser;
-        if (json.id === app.last_id) {
-            innerUser = '';
-        } else {
-            if (json.flag & FLAG_MESSAGE) {
-                // message
+        if (json.flag & FLAG_MESSAGE) {
+            // message
+            if (json.id === app.last_id) {
+                innerUser = '';
+            } else {
                 if (json.flag & FLAG_FROMPEER) {
                     console.log("is peer");
                     innerUser = '<div class="other-name">' + json.username + '</div>';
@@ -60,23 +62,23 @@ function addChatLog(json, message) {
                     console.log("is above");
                     innerUser = '<div class="other-name">' + json.username +  ' (public from ' + json.roomname + ')</div>';
                 }
-                $('#chatlog').append(
-                    '<div class="b bub-other-group">' + innerUser + innerMessage + '</div>'
-                );
-                if ($('.b:last-child').visible()) {
-                    scrollToBottom();
-                }
-                if (!document.hasFocus()) {
-                    notiSound.play();
-                    app.setNotification(app.notification.count + 1);
-                }
-            } else if (json.flag & FLAG_RAIN) {
-                // rain triggered
-                createRain();
-                console.log('Raining');
-                return app.last_id;
             }
-            console.log('flag: ' + json.flag);
+        } else if (json.flag & FLAG_RAIN) {
+            // rain triggered
+            createRain();
+            console.log('Raining');
+            return app.last_id;
+        }
+        console.log('flag: ' + json.flag);
+        $('#chatlog').append(
+            '<div class="b bub-other-group">' + innerUser + innerMessage + '</div>'
+        );
+        if ($('.b:last-child').visible()) {
+            scrollToBottom();
+        }
+        if (!document.hasFocus()) {
+            notiSound.play();
+            app.setNotification(app.notification.count + 1);
         }
     }
     return json.id;
