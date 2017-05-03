@@ -75,7 +75,7 @@
                 {{-- chats are here --}}
             </div>
             <form class="chat-box" id="chatform" autocomplete="off">
-                <input type="text" v-bind="{placeholder: inputBox, disabled: !loggedIn}" id="chat" name="command" maxlength="1200">
+                <input type="text" v-bind="{placeholder: inputBox, disabled: !loggedIn}" id="chat" name="command" maxlength="400">
                 <button type="submit" class="submit-btn" v-if="loggedIn && username">
                     <img src="{{ asset('img/i-send.svg') }}" alt="Send">
                 </button>

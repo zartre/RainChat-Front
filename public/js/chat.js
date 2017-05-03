@@ -6,6 +6,8 @@ const FLAG_MESSAGE = 4;
 const FLAG_FROMPEER = 8;
 const FLAG_FROMABOVE = 16;
 const FLAG_RAIN = 32;
+const FLAG_ENCRYPT = 64;
+const FLAG_BOT = 128;
 
 var notiSound;
 
@@ -63,10 +65,23 @@ function addChatLog(json, message) {
             } else {
                 if (json.flag & FLAG_FROMPEER) {
                     console.log("is peer");
-                    innerUser = '<div class="other-name">' + json.username + '</div>';
+                    innerUser = $('<div/>', {
+                        class: 'other-name',
+                        text: json.username
+                    }).prop('outerHTML');;
                 } else if (json.flag & FLAG_FROMABOVE) {
                     console.log("is above");
+                    innerUser = $('<div/>', {
+                        class: 'other-name',
+                        text: json.username +  ' (public from ' + json.roomname + ')'
+                    }).prop('outerHTML');;
                     innerUser = '<div class="other-name">' + json.username +  ' (public from ' + json.roomname + ')</div>';
+                } else if (json.flag & FLAG_BOT) {
+                    console.log("is bot");
+                    innerUser = $('<div/>', {
+                        class: 'other-name',
+                        text: "rainyBot"
+                    }).prop('outerHTML');;
                 }
             }
         } else if (json.flag & FLAG_RAIN) {
