@@ -81,7 +81,8 @@ function addChatLog(json, message) {
                     innerUser = $('<div/>', {
                         class: 'other-name',
                         text: "rainyBot"
-                    }).prop('outerHTML');;
+                    }).prop('outerHTML');
+                    json.id = -1;
                 }
             }
         } else if (json.flag & FLAG_RAIN) {
