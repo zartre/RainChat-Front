@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, target-densityDpi=device-dpi">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta property="og:image" content="{{ asset('img/ogimage.jpg') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" href="{{ asset('favicon/favicon-32x32.png') }}" sizes="32x32">
@@ -18,8 +18,8 @@
     <title>Rainy.Chat</title>
     <link rel="stylesheet" href="{{ asset('css/chat.css') }}">
     <link rel="stylesheet" href="{{ asset('css/rain-min.css') }}">
-    <script src="https://unpkg.com/vue"></script>
-    {{-- <script src="{{ asset('js/vue.min.js') }}"></script> --}}
+    {{-- <script src="https://unpkg.com/vue"></script> --}}
+    <script src="{{ asset('js/vue.min.js') }}"></script>
 </head>
 
 <body>
@@ -40,7 +40,7 @@
                 <input type="text" placeholder="Display name" v-model="username" autofocus required>
                 <label v-bind:class="{active: loginErrMsg}" class="no-drag">@{{ loginErrMsg }}</label>
                 <button class="styled no-drag" type="submit" v-if="username" @click="checkLogin">Log in</button>
-                <button class="styled no-drag" v-if="!username" onclick="window.open('http://rainy.dev/dev', '_self')">Change room</button>
+                <button class="styled no-drag" v-if="!username" onclick="window.open('http://rainy.chat', '_self')">Change room</button>
             </form>
         </div>
         <section class="rain"></section>

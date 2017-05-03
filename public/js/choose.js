@@ -16,6 +16,8 @@ var app = new Vue({
 					fixed = 1;
 				}
 			}
+			this.roomName = rn.replace(' ', '-');
+			alert(this.roomName);
 			if (this.validate()) {
 				window.open('http://' + this.roomName + '.' + this.host + '/dev', '_self');
 			}
