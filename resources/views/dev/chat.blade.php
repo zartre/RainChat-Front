@@ -12,7 +12,7 @@
     <link rel="mask-icon" href="{{ asset('favicon/safari-pinned-tab.svg') }}" color="#5bbad5">
     <link rel="shortcut icon" href="{{ asset('favicon/favicon.ico') }}">
     <meta name="msapplication-config" content="{{ asset('favicon/browserconfig.xml?v=1.0') }}">
-    <meta name="theme-color" content="#00b8ff">
+    <meta name="theme-color" content="#0267ff">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <title>Rainy.Chat</title>

@@ -248,7 +248,7 @@ var app = new Vue({
             this.night = !this.night;
             if (this.night === false) {
                 this.nightText = 'Night mode';
-                $('meta[name="theme-color"]').attr('content', '#00b8ff');
+                $('meta[name="theme-color"]').attr('content', '#0267ff');
                 $('body').css('background-color', '#FFF');
             } else {
                 this.nightText = 'Normal';
