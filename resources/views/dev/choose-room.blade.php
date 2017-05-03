@@ -27,6 +27,7 @@
                 <img src="{{ asset('img/i-home.svg') }}" alt="Room">
                 <h1>Enter a room name</h1>
                 <input type="text" placeholder="Room name" autofocus required v-model="roomName">
+                <span class="note">without spaces</span>
                 <label v-bind:class="{active: !validate()}">This name is not allowed</label>
                 <button class="styled" type="submit" v-if="roomName" @click="create()">Next</button>
             </form>

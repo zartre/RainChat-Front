@@ -48,6 +48,10 @@ html, body {
 		button.styled {
 			margin-top: 1.5em;
 		}
+		span.note {
+			display: block;
+			color: #626262;
+		}
 		label {
 			color: $error;
 			display: none;
