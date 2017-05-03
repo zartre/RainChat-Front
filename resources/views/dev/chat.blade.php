@@ -18,8 +18,8 @@
     <title>Rainy.Chat</title>
     <link rel="stylesheet" href="{{ asset('css/chat.css') }}">
     <link rel="stylesheet" href="{{ asset('css/rain-min.css') }}">
-    {{-- <script src="https://unpkg.com/vue"></script> --}}
-    <script src="{{ asset('js/vue.min.js') }}"></script>
+    <script src="https://unpkg.com/vue"></script>
+    {{-- <script src="{{ asset('js/vue.min.js') }}"></script> --}}
 </head>
 
 <body>
@@ -44,7 +44,7 @@
             </form>
         </div>
         <section class="rain"></section>
-        <div class="drawer" v-bind:class="{active: drawerOpen}">
+        <div class="drawer" v-bind:class="{active: drawerOpen, night: night}">
             <img src="{{ asset('img/sidebar-white.png') }}" alt="RainyChat" class="logo no-drag">
             <div class="welcome no-drag" v-if="loggedIn">
                 Welcome,<br>
@@ -58,7 +58,7 @@
             </div>
         </div>
         <div class="drawer-bg" v-bind:class="{active: drawerOpen}" @click="drawerOpen=false"></div>
-        <div class="content">
+        <div class="content" v-bind:class="{night: night}">
             <header>
                 <img src="{{ asset('img/i-menu.svg') }}" alt="menu" class="icon no-drag" id="menu" @click="drawerOpen=true">
                 <div class="room-name no-drag">
@@ -66,9 +66,9 @@
                 </div>
                 <img src="{{ asset('img/i-more.svg') }}" alt="menu" class="icon no-drag" id="more" @click="menuOpen=!menuOpen">
                 <div class="menu" v-bind:class="{active: menuOpen}">
-                    <a href="#">Night mode</a>
+                    <a href="#" @click="toggleNight()">@{{ nightText }}</a>
                     <a href="{{ url('http://rainy.dev/dev') }}" target="_blank">Join more</a>
-                    <a href="" onclick="window.reload(false)">Logout</a>
+                    <a href="#" onclick="window.reload(false)">Logout</a>
                 </div>
             </header>
             <div class="chat-wrap" id="chatlog">

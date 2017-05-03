@@ -245,14 +245,15 @@ var app = new Vue({
             }
         },
         toggleNight: function() {
-            $('body').toggleClass('night');
             this.night = !this.night;
             if (this.night === false) {
                 this.nightText = 'Night mode';
                 $('meta[name="theme-color"]').attr('content', '#00b8ff');
+                $('body').css('background-color', '#FFF');
             } else {
                 this.nightText = 'Normal';
                 $('meta[name="theme-color"]').attr('content', '#000');
+                $('body').css('background-color', '#000');
             }
         },
         setNotification: function(value) {

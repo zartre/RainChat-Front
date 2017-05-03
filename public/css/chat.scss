@@ -1,5 +1,7 @@
 $primary-color: rgb(2,103,255);
 $secondary-color: rgb(56,202,255);
+$night-light: #c3c3c3;
+$night-dark: #2d2d2d;
 $primary-shadow: 0 8px 30px rgba(2,103,255,0.1);
 $btn-shadow: 0px 4px 10px rgba(2,103,255,0.3);
 $my-bubble: #E6F0FF;
@@ -344,6 +346,61 @@ form.chat-box {
 	text-align: center;
 	margin-bottom: 1em;
 	color: $primary-color;
+}
+
+/* NIGHT */
+
+.drawer {
+	&.night {
+		background: #000;
+		color: $night-light;
+		box-shadow: none;
+		border-right: 1px solid $night-dark;
+		.logo {
+			filter: brightness(0.8);
+		}
+	}
+}
+.content {
+	&.night {
+		background: #000;
+		header {
+			background: #000;
+			box-shadow: none;
+			border-bottom: 1px solid $night-dark;
+			.room-name {
+				color: $night-light;
+			}
+		}
+		.icon {
+			filter: saturate(0) brightness(2.3);
+		}
+		.menu {
+			background: $night-dark;
+			a {
+				color: $night-light;
+			}
+		}
+		.notification-log {
+			color: $night-light;
+		}
+		.bubble {
+			&.me {
+				background: $night-dark;
+				color: $night-light;
+			}
+		}
+		form.chat-box {
+			input {
+				background: #000;
+				color: $night-light;
+				border-bottom-color: $night-dark;
+			}
+			.submit-btn {
+				background: $night-dark;
+			}
+		}
+	}
 }
 
 @media screen and (min-width: 1024px) {
