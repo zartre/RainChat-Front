@@ -73,7 +73,7 @@
                 <div class="menu" v-bind:class="{active: menuOpen}">
                     <a href="#" @click="toggleNight()">@{{ nightText }}</a>
                     <a href="{{ url('http://rainy.dev/dev') }}" target="_blank">Join more</a>
-                    <a href="#" onclick="window.reload(false)">Logout</a>
+                    <a href="" onclick="window.reload(false)">Logout</a>
                 </div>
             </header>
             <div class="chat-wrap" id="chatlog">
