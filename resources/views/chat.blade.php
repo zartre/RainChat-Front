@@ -89,7 +89,7 @@
     </div>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/visible.min.js') }}"></script>
-    <script src="{{ asset('js/chat.js?v=1.2') }}"></script>
+    <script src="{{ asset('js/chat-min.js?v=1.3') }}"></script>
     <script src="{{ asset('js/rain-min.js?v=1.2') }}"></script>
 </body>
 
