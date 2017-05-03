@@ -40,7 +40,11 @@
                 <input type="text" placeholder="Display name" v-model="username" autofocus required>
                 <label v-bind:class="{active: loginErrMsg}" class="no-drag">@{{ loginErrMsg }}</label>
                 <button class="styled no-drag" type="submit" v-if="username" @click="checkLogin">Log in</button>
-                <button class="styled no-drag" v-if="!username" onclick="window.open('{{ url('/') }}', '_self')">Change room</button>
+                @if (substr(url('/'), -3, 3) == 'dev')
+                    <button class="styled no-drag" v-if="!username" onclick="window.open('http://rainy.dev', '_self')">Change room</button>
+                @else
+                    <button class="styled no-drag" v-if="!username" onclick="window.open('http://rainy.chat', '_self')">Change room</button>
+                @endif
             </form>
         </div>
         <section class="rain"></section>
