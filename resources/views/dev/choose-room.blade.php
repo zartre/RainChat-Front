@@ -32,7 +32,7 @@
             </form>
         </div>
     </div>
-    <script src="{{ asset('js/choose.js') }}"></script>
+    <script src="{{ asset('js/choose-min.js') }}"></script>
 </body>
 
 </html>
