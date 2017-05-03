@@ -14,19 +14,14 @@
 //  chat room
 Route::group(['domain' => '{room}.rainy.{tld}'], function () {
     Route::get('/dev', function ($room, $tld) {
-        return view('dev.chat', compact('room', 'tld'));
+        return view('chat', compact('room', 'tld'));
     })->where('room', '.*');
 });
 
-// choose room
-Route::get('/dev', function () {
-    return view('dev.choose-room');
-});
-
+// choose room (home page)
 Route::get('/', function () {
-    return view('chat');
+    return view('choose-room');
 });
-
 
 // Google Webmaster verification
 Route::get('/googled63a3a7848bbc072.html', function () {
