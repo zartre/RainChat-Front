@@ -82,7 +82,6 @@ function addChatLog(json, message) {
                         class: 'other-name',
                         text: "rainyBot"
                     }).prop('outerHTML');
-                    json.id = -1;
                 }
             }
         } else if (json.flag & FLAG_RAIN) {
@@ -119,11 +118,11 @@ function sendMessage(ws) {
     ws.send(message);
     message = message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
     var json = {
-        id: -1,
+        id: 0,
         username: app.username,
         flag: 0
     }
-    addChatLog(json, message);
+    app.last_id = addChatLog(json, message);
 }
 
 function ready(ws, username, roomname) {
@@ -238,7 +237,7 @@ var app = new Vue({
                     this.inputBox = 'Type here';
                     setTimeout(function() {
                         $('#chat').focus();
-                    }, 100);
+                    }, 200);
                 } else {
                     login(this.ws, this.username, "global");
                 }

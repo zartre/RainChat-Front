@@ -320,7 +320,7 @@ form.chat-box {
 	.other-name {
 		font-size: 0.9em;
 		color: #5f5f5f;
-		width: 200px;
+		width: 450px;
 		overflow: hidden;
 		white-space: nowrap;
 		text-overflow: ellipsis;
@@ -390,6 +390,11 @@ form.chat-box {
 				color: $night-light;
 			}
 		}
+		.bub-other-group {
+			.other-name {
+				color: $night-light;
+			}
+		}
 		form.chat-box {
 			input {
 				background: #000;
@@ -435,6 +440,11 @@ form.chat-box {
 		transform: translateX(-240px);
 		box-shadow: none;
 	}
+	.bub-other-group {
+		.other-name {
+			width: 300px;
+		}
+	}
 	form.chat-box {
 		max-width: 100%;
 		box-shadow: 0 -8px 30px rgba(2,103,255,0.1);
@@ -454,6 +464,11 @@ form.chat-box {
 		}
 		.menu {
 			top: 66px;
+		}
+	}
+	.bub-other-group {
+		.other-name {
+			width: 200px
 		}
 	}
 	form.chat-box {
